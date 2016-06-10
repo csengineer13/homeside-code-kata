@@ -1,0 +1,124 @@
+.modal-open {
+	overflow: hidden;
+	padding-right: ms(0);
+}
+
+.side-modal-container {
+	@include z-10;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	background-color: rgba(color(black), 0);
+	transform: translateX(100%);
+	cursor: pointer;
+
+	&.animate-out {
+		animation-name: modal-container-out;
+		animation-duration: $timing;
+	}
+
+	&.is-open {
+		background-color: rgba(color(black), 0.5);
+		transform: translateX(0);
+		animation-name: modal-container-in;
+		animation-duration: $timing;
+
+		.side-modal {
+			animation-name: side-modal-in;
+			animation-duration: $timing;
+			transform: translateX(0);
+		}
+	}
+}
+
+.side-modal {
+	@include clearfix;
+	position: absolute;
+	cursor: default;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	max-width: ms(12);
+	background-color: color(white);
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	animation-name: side-modal-out;
+	animation-duration: $timing;
+	transform: translateX(#{ms(12)});
+
+	&__heading {
+		@include clearfix;
+		border-bottom: 1px solid color(gray, 2);
+		padding: ms(2) ms(1);
+
+		h3 {
+			margin: 0;
+			padding-right: ms(4);
+		}
+	}
+
+	&__content {
+		padding: ms(2);
+	}
+
+	&__close {
+		// Icon?
+		position: absolute;
+		right: ms(-2);
+		top: ms(0);
+		cursor: pointer;
+		padding: ms(1);
+		box-sizing: content-box;
+
+		use {
+			fill: color(black);
+		}
+	}
+
+}
+
+
+@keyframes modal-container-in {
+	0% {
+		background-color: rgba(color(black), 0);
+	}
+	100% {
+		background-color: rgba(color(black), 0.5);
+	}
+}
+
+@keyframes modal-container-out {
+	0% {
+		background-color: rgba(color(black), 0.5);
+		transform: translateX(0);
+	}
+	99% {
+		transform: translateX(0);
+	}
+	100% {
+		background-color: rgba(color(black), 0);
+		transform: translateX(100%);
+	}
+}
+
+@keyframes side-modal-out {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(#{ms(12)});
+	}
+}
+
+@keyframes side-modal-in {
+	0% {
+		transform: translateX(#{ms(12)});
+	}
+	100% {
+		transform: translateX(0);
+	}
+}

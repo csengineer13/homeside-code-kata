@@ -1,0 +1,42 @@
+.overlay-modal-container {
+	@include z-10;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	background-color: rgba(color(black), 0.5);
+	display: none;
+	cursor: pointer;
+
+	&.is-open {
+		display: block;
+	}
+}
+
+.overlay-modal {
+	@include clearfix;
+	cursor: default;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+	height: 100%;
+	width: 100%;
+	background-color: color(white);
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-align: center;
+	-webkit-overflow-scrolling: touch;
+
+	@include breakpoint ($bp-s) {
+		top: 50%;
+		height: auto;
+		transform: translate(-50%, -50%);
+		max-width: ms(12);
+	}
+
+	&__content {
+		padding: ms(1);
+	}
+}
