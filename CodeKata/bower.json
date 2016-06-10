@@ -1,0 +1,22 @@
+{
+  "name": "CodeKata",
+  "homepage": "https://github.com/csengineer13/homeside-code-kata",
+  "authors": [
+    "Daniel Brown <csengineer13@gmail.com>"
+  ],
+  "description": "A CodeKata for homeside",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "datatables.net": "^1.10.12",
+    "datatables.net-dt": "^1.10.12"
+  }
+}
