@@ -1,0 +1,33 @@
+{
+  "name": "fabricator",
+  "description": "A tool for building website UI toolkits",
+  "main": "README.md",
+  "authors": [
+    "Danny Brown"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "toolkit",
+    "styleguide",
+    "framework",
+    "scaffold",
+    "patterns",
+    "library"
+  ],
+  "homepage": "https://github.com/csengineer13/homeside-code-kata",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modular-scale": "^2.1.3",
+    "bourbon": "^4.2.7",
+    "neat": "^1.7.4",
+    "owl.carousel": "^2.1.5",
+    "css-utils": "^0.3.0"
+  }
+}
