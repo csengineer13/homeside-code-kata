@@ -185,8 +185,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CodeKata.Domain\CodeKata.Domain.csproj">
-      <Project>{ad366895-b630-4cd2-951f-d45db0db8fc3}</Project>
+    <ProjectReference Include="..\CodeKata.Domain\CodeKata.Domain.csproj">
+      <Project>{dbc33ea5-df6e-42b1-839b-e04b7377184c}</Project>
       <Name>CodeKata.Domain</Name>
     </ProjectReference>
   </ItemGroup>
