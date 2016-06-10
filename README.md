@@ -4,10 +4,19 @@
 ## Overview
 
 Goal of this exercise is to build a web portal that allows all departments to upload (csv documents), download(csv documents) and submit tasks that automate various internal manual efforts. This will become the backbone of all department automations and must be able to quantify the work automated.
+
+## To Do:
+- [x] Establish basic architecture laid out in step 1 of the requirements section.
+- [ ] Create a test page containing a jQuery datatable
+- [ ] Remove views that are not needed for our SPA portal
+- [ ] Remove bootstrap styling, if possible
+- [ ] Move script and style management to bower
+- [ ] Begin building out "gohomeside.com theme" in SASS by matching color palletes
+
  
 ## Requirements
 
-1. MVC .net 4.6, c#, entity framework, sql server 2014 express, git (source control)
+1. ~~MVC .net 4.6, c#, entity framework, sql server 2014 express, git (source control)~~
 2. Build a portal (no authentication) that uses our (gohomeside.com) theme.
 3. User interface should have buttons / options for “Pay MIP”, ”Post Transactions”, “Create warehouse line file”
 4. Action for each option will allow the user to upload a csv file and submit the task
