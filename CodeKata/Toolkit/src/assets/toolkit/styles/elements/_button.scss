@@ -1,0 +1,92 @@
+.button {
+	@include wide-kerning;
+	text-transform: uppercase;
+	background-color: color(button, primary);
+	border: 0;
+	padding: 1.072em ms(3);
+	border-radius: 2px;
+	text-align: center;
+	line-height: ms(1, 1);
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color ($timing/2) $easing;
+
+	& + &:not(.button--stretch) {
+		@include breakpoint($bp-l) {
+			margin-top: 0;
+			margin-left: ms(0);
+		}
+	}
+
+	&,
+	&:visited,
+	&:active,
+	&:hover {
+		color: color(white);
+	}
+
+	&:hover {
+		background-color: color(button, primary-hover);
+		text-decoration: none;
+	}
+
+	&--stretch {
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+	}
+
+	&--secondary {
+		background-color: color(button, secondary);
+
+		&:hover {
+			background-color: color(button, secondary-hover);
+		}
+	}
+
+	&--tertiary {
+		background-color: color(button, tertiary);
+
+		&:hover {
+			background-color: color(button, tertiary-hover);
+		}
+	}
+
+	&--transaction {
+		background-color: color(button, transaction);
+
+		&:hover {
+			background-color: color(button, transaction-hover);
+		}
+	}
+
+	&--darken {
+		background-color: rgba(0, 0, 0, 0.3);
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+	}
+
+	&.is-disabled {
+		opacity: 0.3;
+		cursor: not-allowed;
+	}
+
+	@each $color, $tones in $colors {
+		@each $tone, $bgcolor in $tones {
+
+			$className: if($tone == 0, #{$color}, #{$color}#{$tone});
+
+			&--#{$className} {
+				&,
+				&:hover {
+					background-color: $bgcolor;
+				}
+			}
+
+		}
+	}
+
+}

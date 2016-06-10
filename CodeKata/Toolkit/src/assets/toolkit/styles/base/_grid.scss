@@ -1,0 +1,70 @@
+.row {
+	@include outer-container;
+	max-width: $max-width-rem;
+	position: relative;
+	padding-right: 1em;
+	padding-left: 1em;
+
+	&--fluid {
+		max-width: 100%;
+	}
+
+	&--narrow {
+		max-width: $max-width-narrow;
+	}
+
+	.row,
+	&--no-gutter {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+[class*=col-] {
+	position: relative;
+	float: left;
+}
+
+// grid
+@mixin col-classes($size) {
+	@for $i from 1 through $grid-columns {
+		.col-#{$size}-#{$i} {
+			@include span-columns($i);
+
+			.login &,
+			.search &,
+			.card &,
+			.photo-tile-row & {
+				@include span-columns($i, table);
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@include col-classes($size:s);
+
+@include breakpoint($bp-m) {
+	@include col-classes($size:m);
+}
+
+@include breakpoint($bp-l) {
+	@include col-classes($size:l);
+}
+
+@include breakpoint($bp-xl) {
+	@include col-classes($size:xl);
+}
+
+.col-m-6:nth-child(2n) {
+	margin-right: 0;
+}
+
+.col--centered {
+	&,
+	&:nth-child(n) {
+		margin-left: auto !important;
+		margin-right: auto !important;
+		float: none !important;
+	}
+}

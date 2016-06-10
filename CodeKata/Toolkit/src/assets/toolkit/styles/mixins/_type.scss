@@ -1,0 +1,7 @@
+@mixin wide-kerning {
+	letter-spacing: ms(-7);
+}
+
+.wide-kerning {
+	@include wide-kerning;
+}

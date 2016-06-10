@@ -1,0 +1,63 @@
+/**
+ * Color variable map
+ * based on: http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+ */
+$colors: (
+	green: (
+		0: #d0e4a6,
+		1: #8fd2ca,
+		2: #659d97,
+		3: #abc084
+	),
+	blue: (
+		0: #00a8cb,
+		1: #8191ca
+	),
+	brown: (
+		0: #472a2b,
+		1: #bbb0a6
+	),
+	orange: (
+		0: #f99d31
+	),
+	tan: (
+		0: #fbf5dd,
+		1: #e8e2cc,
+		2: #ffe894
+	),
+	red: (
+		0: #db0962,
+		1: lighten(#db0962, 50%),
+		2: lighten(#db0962, 30%)
+	),
+	gray: (
+		0: #808080,
+		1: #cfd4d8,
+		2: #e7e7e7,
+		3: #f8f8f8,
+		4: #f3f3f3,
+		5: #b3b8bb
+	),
+	black: (
+		0: #333,
+		1: #515151
+	),
+	white: (
+		0: #fff
+	),
+	button: (
+		primary: #00a8cb,
+		primary-hover: darken(#00a8cb, 4%),
+		secondary: #bbb0a6,
+		secondary-hover: darken(#bbb0a6, 4%),
+		tertiary: #bfbfbf,
+		tertiary-hover: darken(#bfbfbf, 4%),
+		transaction: #abc084,
+		transaction-hover: darken(#abc084, 4%),
+	)
+);
+
+
+@function color($color, $tone: 0) {
+    @return map-get(map-get($colors, $color), $tone);
+}

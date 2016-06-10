@@ -1,0 +1,24 @@
+// modular scale
+$ms-base: 1em;
+$ms-ratio: $fourth;
+
+// css-utils
+$util-ratio: $ms-ratio;
+$util-spacing: (
+    xxs: -7,
+    xs: -3,
+    s: -2,
+    base: 0,
+    l: 3,
+    xl: 5,
+    xxl: 6
+);
+
+// typography
+$measure: ms(13, 1rem);
+$measure-plus: 48rem;
+
+// grid
+$grid-columns: 12;
+$column: ms(4);
+$gutter: ms(1);
