@@ -7,11 +7,13 @@ Goal of this exercise is to build a web portal that allows all departments to up
 
 ## To Do:
 - [x] Establish basic architecture laid out in step 1 of the requirements section.
-- [ ] Create a test page containing a jQuery datatable
+- [x] Create a test page containing a jQuery datatable
 - [ ] Remove views that are not needed for our SPA portal
-- [ ] Remove bootstrap styling, if possible
-- [ ] Move script and style management to bower
+- [x] Remove bootstrap styling, if possible
+- [x] Move script and style management to bower
 - [ ] Begin building out "gohomeside.com theme" in SASS by matching color palletes
+- [ ] Material design: start with buttons, slide pane, grid, main layout
+- [ ] Create "dummy" buttons that open slide pane to finish steps 2 and 3
 
  
 ## Requirements
