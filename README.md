@@ -12,18 +12,18 @@ Goal of this exercise is to build a web portal that allows all departments to up
 3. User interface should have buttons / options for “Pay MIP”, ”Post Transactions”, “Create warehouse line file”
 4. Action for each option will allow the user to upload a csv file and submit the task
 5. Each submission should create a new task in the database with the following (create a normalized data scheme)
-⋅⋅* Task type (think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)
-⋅⋅* Task name
-⋅⋅* Task description
-⋅⋅* Start datetime
-⋅⋅* End datetime
-⋅⋅* User who submitted the task
-⋅⋅* Status (queued, processing, finished, error)
-⋅⋅* File path / url to file uploaded
+  * Task type (think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)
+  * Task name
+  * Task description
+  * Start datetime
+  * End datetime
+  * User who submitted the task
+  * Status (queued, processing, finished, error)
+  * File path / url to file uploaded
 6. create a status page that utilizes jquery datatables to show each task in queue and the status. Order by date created. You should have 1 datatable. It must convey to the user which tasks are queued, processing, failed and successful.
 7. Lastly, create a c# windows service that queries the database you created, for all tasks in queued status.
 8. For now, don’t worry about the actual actions / code to implement each. Just set the end datetime and go onto the next queued item ( later, if hired, we will work on the automation / action code)
-⋅⋅* Think about a scalable way to implement the actions so that over the next few years will have reusable actions that can be plugged into / reused. You don’t have to necessarily create all of it now but be able to speak to your plan on how we can implement this idea.
+  * Think about a scalable way to implement the actions so that over the next few years will have reusable actions that can be plugged into / reused. You don’t have to necessarily create all of it now but be able to speak to your plan on how we can implement this idea.
 9. Lastly the windows service must process tasks in parallel (concurrently using multi-threading) and update the database immediately when a task is pulled off the queue (setting status to processing etc).
 
  
