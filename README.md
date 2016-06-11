@@ -18,7 +18,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Wire buttons up to load different content in modal
 - [x] Flush out data model using EF
 - [x] Seed data for table using Faker library
-- [ ] Update jQuery datatable to use correct columns
+- [x] Update jQuery datatable to use correct columns
 - [ ] Implement automapper to assist with domain -> dto -> vm mappings
 - [ ] Wire up jQuery datatable to pull up-to-date data from an API endpoint
 
@@ -32,6 +32,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 	- Think about pulling this out into a seperate table
 	- Investigate ways to use this field in step #7 as suggested...
 - [ ] Pull domain enums into their own tables (CRUD management later on?)
+- [ ] Add quick filters for datatable (status)
 
 
 
