@@ -1,9 +1,9 @@
-.modal-open {
+body.modal-open {
 	overflow: hidden;
 	padding-right: ms(0);
 }
 
-.side-modal-container {
+.modal {
 	@include z-10;
 	position: fixed;
 	height: 100%;
@@ -15,43 +15,53 @@
 	cursor: pointer;
 
 	&.animate-out {
-		animation-name: modal-container-out;
+		animation-name: modal-out;
 		animation-duration: $timing;
+
+		.modal-container, .modal-header {
+			animation-name: modal-container-out;
+			animation-duration: $timing;
+		}
 	}
 
 	&.is-open {
 		background-color: rgba(color(black), 0.5);
 		transform: translateX(0);
-		animation-name: modal-container-in;
+		animation-name: modal-in;
 		animation-duration: $timing;
 
-		.side-modal {
-			animation-name: side-modal-in;
+		.modal-container, .modal-header {
+			animation-name: modal-container-in;
 			animation-duration: $timing;
 			transform: translateX(0);
 		}
 	}
-}
 
-.side-modal {
-	@include clearfix;
-	position: absolute;
-	cursor: default;
-	top: 0;
-	right: 0;
-	height: 100%;
-	width: 100%;
-	max-width: ms(12);
-	background-color: color(white);
-	overflow-x: hidden;
-	overflow-y: auto;
-	-webkit-overflow-scrolling: touch;
-	animation-name: side-modal-out;
-	animation-duration: $timing;
-	transform: translateX(#{ms(12)});
+	&-container, &-header {
+		position: absolute;
+		cursor: default;
+		top: 0;
+		right: 0;
+		width: 100%;
+		max-width: ms(12);
+	}
 
-	&__heading {
+	&-container {
 		@include clearfix;
+		height: 100%;
+		background-color: color(white);
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		animation-name: side-modal-out;
+		animation-duration: $timing;
+		transform: translateX(#{ms(12)});
+	}
+
+	&-header {
+		@include clearfix;
+		@include z-5;
+		background-color: white;
 		border-bottom: 1px solid color(gray, 2);
 		padding: ms(2) ms(1);
 
@@ -61,11 +71,11 @@
 		}
 	}
 
-	&__content {
+	&-content {
 		padding: ms(2);
 	}
 
-	&__close {
+	&-close {
 		// Icon?
 		position: absolute;
 		right: ms(-2);
@@ -78,11 +88,10 @@
 			fill: color(black);
 		}
 	}
-
 }
 
 
-@keyframes modal-container-in {
+@keyframes modal-in {
 	0% {
 		background-color: rgba(color(black), 0);
 	}
@@ -91,7 +100,7 @@
 	}
 }
 
-@keyframes modal-container-out {
+@keyframes modal-out {
 	0% {
 		background-color: rgba(color(black), 0.5);
 		transform: translateX(0);
@@ -105,7 +114,7 @@
 	}
 }
 
-@keyframes side-modal-out {
+@keyframes modal-container-out {
 	0% {
 		transform: translateX(0);
 	}
@@ -114,7 +123,7 @@
 	}
 }
 
-@keyframes side-modal-in {
+@keyframes modal-container-in {
 	0% {
 		transform: translateX(#{ms(12)});
 	}
