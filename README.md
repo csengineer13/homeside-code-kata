@@ -16,7 +16,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Create "dummy" buttons that open slide pane to finish steps 2 and 3
 - [ ] Move step 3's buttons to the main navigation bar
 - [ ] Wire buttons up to load different content in modal
-- [ ] Flush out data model using EF
+- [x] Flush out data model using EF
 - [ ] Seed data for table using Faker library
 - [ ] Update jQuery datatable to use correct columns
 - [ ] Implement automapper to assist with domain -> dto -> vm mappings
@@ -31,6 +31,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Task type(think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)
 	- Think about pulling this out into a seperate table
 	- Investigate ways to use this field in step #7 as suggested...
+- [ ] Pull domain enums into their own tables (CRUD management later on?)
 
 
 
