@@ -1,3 +1,5 @@
+using CodeKata.Domain.Models.Seed;
+
 namespace CodeKata.Domain.Migrations
 {
     using System;
@@ -14,18 +16,14 @@ namespace CodeKata.Domain.Migrations
 
         protected override void Seed(CodeKata.Domain.CodeKataContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            // Deletes all data, from all tables, except for __MigrationHistory
+            context.Database.ExecuteSqlCommand("sp_MSForEachTable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'");
+            context.Database.ExecuteSqlCommand("sp_MSForEachTable 'IF OBJECT_ID(''?'') NOT IN (ISNULL(OBJECT_ID(''[dbo].[__MigrationHistory]''),0)) DELETE FROM ?'");
+            context.Database.ExecuteSqlCommand("EXEC sp_MSForEachTable 'ALTER TABLE ? CHECK CONSTRAINT ALL'");
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            // proceed with the seed here
+            var testUsers = UserSeed.Seed(context);
+            SubmittedTaskSeed.Seed(context, testUsers);
         }
     }
 }

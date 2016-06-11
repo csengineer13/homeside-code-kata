@@ -40,6 +40,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bogus, Version=7.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.7.1.2\lib\net40\Bogus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -49,6 +53,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -87,7 +95,13 @@
     <Compile Include="Migrations\201606110208385_submitted-task-schema.Designer.cs">
       <DependentUpon>201606110208385_submitted-task-schema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606110234365_table-name-change.cs" />
+    <Compile Include="Migrations\201606110234365_table-name-change.Designer.cs">
+      <DependentUpon>201606110234365_table-name-change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Seed\SubmittedTaskSeed.cs" />
+    <Compile Include="Models\Seed\UserSeed.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\SubmittedTask.cs" />
     <Compile Include="Models\TestModel2.cs" />
@@ -99,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606110208385_submitted-task-schema.resx">
       <DependentUpon>201606110208385_submitted-task-schema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606110234365_table-name-change.resx">
+      <DependentUpon>201606110234365_table-name-change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
