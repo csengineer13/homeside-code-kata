@@ -9,6 +9,9 @@ namespace CodeKata.Domain
 
         public CodeKataContext() : base("CodeKataContext")
         {
+            // Stop EF from creating "proxy" objects when queried (breaks automapper)
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<SubmittedTask> SubmittedTasks { get; set; }

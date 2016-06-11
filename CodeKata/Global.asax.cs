@@ -8,6 +8,7 @@ namespace CodeKata
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -16,7 +17,7 @@ namespace CodeKata
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            ConfigMapper.MapAll(); // Kickstart AutoMapper; Declare Maps
+            AutoMapperConfig.RegisterMappings();
         }
     }
 }
