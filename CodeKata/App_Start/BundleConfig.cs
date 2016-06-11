@@ -22,6 +22,7 @@ namespace CodeKata
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                     "~/bower_components/datatables.net-dt/css/jquery.dataTables.min.css",
+                    "~/Toolkit/dist/assets/toolkit/styles/toolkit.css",
                     "~/Content/site.css"));
         }
     }
