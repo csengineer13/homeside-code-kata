@@ -5,9 +5,12 @@ html {
 }
 
 body {
-	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
-	color: color(black);
-	font-size: 1rem;
+	//font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+	font-family: "proxima-nova",sans-serif;
+	color: color(black); // color: #454b58;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 }
 
