@@ -405,6 +405,10 @@
       <Project>{dbc33ea5-df6e-42b1-839b-e04b7377184c}</Project>
       <Name>CodeKata.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CodeKata.ViewModel\CodeKata.ViewModel.csproj">
+      <Project>{98278a85-c132-42a8-9c17-aa26615d9033}</Project>
+      <Name>CodeKata.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
