@@ -7,33 +7,31 @@
 
     <!-- "Proxima-Nova" font stolen from GoHomeside website -->
     <script src="https://use.typekit.net/oly6zag.js"></script>
-    <style type="text/css"> .sans-serif, .tk-proxima-nova { font-family: "proxima-nova",sans-serif; } </style>
+    <style type="text/css">
+        .sans-serif, .tk-proxima-nova {
+            font-family: "proxima-nova",sans-serif;
+        }
+    </style>
     <link rel="stylesheet" href="https://use.typekit.net/c/e51408/1w;proxima-nova,7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191,2clzCG:W:i4,2clzC9:W:n3,2clzCF:W:n4,2clzCH:W:n6,2clzC5:W:n7/l" media="all">
-    
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+
+    <header id="primary-header">
+        <div class="vertical-align">
+            <div class="vertical-align-contain logo-contain">
+                <h1>
+                    <a href="/" id="site-logo">Homeside</a>
+                </h1>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+
+    </header>
+
+
+    <main class="container body-content">
         @RenderBody()
         <hr />
         <footer>
