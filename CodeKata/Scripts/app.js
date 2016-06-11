@@ -4,7 +4,42 @@
 	vm.init();
 
     // kickstart jQuery DataTable
-    $('#example').DataTable();
+    $('#example').DataTable({
+    	"ajax": '/Home/SubmittedTasks',
+    	"order": [[ 4, "desc" ]],
+    	"columnDefs": [{
+		    "defaultContent": "-",
+		    "targets": "_all"
+		  },
+		  {
+		  	"targets": [0],
+		  	"data": "Id"
+		  },
+		  {
+		  	"targets": [1],
+		  	"data": "Name"
+		  },
+		  {
+		  	"targets": [2],
+		  	"data": "Type"
+		  },
+		  {
+		  	"targets": [3],
+		  	"data": "Status"
+		  },
+		  {
+		  	"targets": [4],
+		  	"data": "CreatedDate"
+		  },
+		  {
+		  	"targets": [5],
+		  	"data": "CreatedBy"
+		  },
+		  {
+		  	"targets": [6],
+		  	"data": "FileURL"
+		  }]
+    });
 
 });
 
