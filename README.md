@@ -19,8 +19,11 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Flush out data model using EF
 - [x] Seed data for table using Faker library
 - [x] Update jQuery datatable to use correct columns
-- [ ] Implement automapper to assist with domain -> dto -> vm mappings
-- [ ] Wire up jQuery datatable to pull up-to-date data from an API endpoint
+- [x] Implement automapper to assist with domain -> dto -> vm mappings
+- [x] Wire up jQuery datatable to pull up-to-date data from an API endpoint
+- [ ] Create AJAX endpoint for file upload
+- [ ] Setup basic submission form
+- [ ] Pass data AND file, create basic new entry, refresh table's data
 
 
 #### Housecleaning: Bonus
@@ -31,8 +34,12 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Task type(think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)
 	- Think about pulling this out into a seperate table
 	- Investigate ways to use this field in step #7 as suggested...
+	- Linked table where each task has associated actions (front-end fields required), and PowerShell or Python scripts?
 - [ ] Pull domain enums into their own tables (CRUD management later on?)
 - [ ] Add quick filters for datatable (status)
+- [ ] Add a more obvious differentiatior for status (color / shape / icon)
+- [ ] Enhance seed data (timestamps and states match up)
+- [ ] Explor datatable configuration properties
 
 
 
@@ -45,15 +52,15 @@ Goal of this exercise is to build a web portal that allows all departments to up
 3. ~~User interface should have buttons / options for “Pay MIP”, ”Post Transactions”, “Create warehouse line file”~~
 4. Action for each option will allow the user to upload a csv file and submit the task
 5. Each submission should create a new task in the database with the following (create a normalized data scheme)
-  * Task type (think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)
-  * Task name
-  * Task description
-  * Start datetime
-  * End datetime
-  * User who submitted the task
-  * Status (queued, processing, finished, error)
-  * File path / url to file uploaded
-6. create a status page that utilizes jquery datatables to show each task in queue and the status. Order by date created. You should have 1 datatable. It must convey to the user which tasks are queued, processing, failed and successful.
+  * ~~Task type (think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)~~
+  * ~~Task name~~
+  * ~~Task description~~
+  * ~~Start datetime~~
+  * ~~End datetime~~
+  * ~~User who submitted the task~~
+  * ~~Status (queued, processing, finished, error)~~
+  * ~~File path / url to file uploaded~~
+6. ~~create a status page that utilizes jquery datatables to show each task in queue and the status. Order by date created. You should have 1 datatable. It must convey to the user which tasks are queued, processing, failed and successful.~~
 7. Lastly, create a c# windows service that queries the database you created, for all tasks in queued status.
 8. For now, don’t worry about the actual actions / code to implement each. Just set the end datetime and go onto the next queued item ( later, if hired, we will work on the automation / action code)
   * Think about a scalable way to implement the actions so that over the next few years will have reusable actions that can be plugged into / reused. You don’t have to necessarily create all of it now but be able to speak to your plan on how we can implement this idea.
