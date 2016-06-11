@@ -8,19 +8,36 @@ Goal of this exercise is to build a web portal that allows all departments to up
 ## To Do:
 - [x] Establish basic architecture laid out in step 1 of the requirements section.
 - [x] Create a test page containing a jQuery datatable
-- [ ] Remove views that are not needed for our SPA portal
+- [x] Remove views that are not needed for our SPA portal
 - [x] Remove bootstrap styling, if possible
 - [x] Move script and style management to bower
-- [ ] Begin building out "gohomeside.com theme" in SASS by matching color palletes
-- [ ] Material design: start with buttons, slide pane, grid, main layout
-- [ ] Create "dummy" buttons that open slide pane to finish steps 2 and 3
+- [x] Begin building out "gohomeside.com theme" in SASS by matching color palletes
+- [x] Material design: start with buttons, slide pane, grid, main layout
+- [x] Create "dummy" buttons that open slide pane to finish steps 2 and 3
+- [ ] Move step 3's buttons to the main navigation bar
+- [ ] Wire buttons up to load different content in modal
+- [ ] Flush out data model using EF
+- [ ] Seed data for table using Faker library
+- [ ] Update jQuery datatable to use correct columns
+- [ ] Implement automapper to assist with domain -> dto -> vm mappings
+- [ ] Wire up jQuery datatable to pull up-to-date data from an API endpoint
+
+
+#### Housecleaning: Bonus
+- [ ] Enhance theme further (datatable, headings, hover effects, etc.)
+- [ ] Flush out toolkit to include all elements and molecules used
+- [ ] Create front-end "seed data" buttons for traffic simulation
+- [ ] Implement a responsive datatable
+
+
+
 
  
 ## Requirements
 
 1. ~~MVC .net 4.6, c#, entity framework, sql server 2014 express, git (source control)~~
-2. Build a portal (no authentication) that uses our (gohomeside.com) theme.
-3. User interface should have buttons / options for “Pay MIP”, ”Post Transactions”, “Create warehouse line file”
+2. ~~Build a portal (no authentication) that uses our (gohomeside.com) theme.~~
+3. ~~User interface should have buttons / options for “Pay MIP”, ”Post Transactions”, “Create warehouse line file”~~
 4. Action for each option will allow the user to upload a csv file and submit the task
 5. Each submission should create a new task in the database with the following (create a normalized data scheme)
   * Task type (think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)
