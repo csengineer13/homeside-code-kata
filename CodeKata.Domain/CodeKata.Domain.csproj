@@ -83,14 +83,22 @@
     <Compile Include="Migrations\201606101234304_init.Designer.cs">
       <DependentUpon>201606101234304_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606110208385_submitted-task-schema.cs" />
+    <Compile Include="Migrations\201606110208385_submitted-task-schema.Designer.cs">
+      <DependentUpon>201606110208385_submitted-task-schema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\TestModel.cs" />
-    <Compile Include="Model\TestModel2.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\SubmittedTask.cs" />
+    <Compile Include="Models\TestModel2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606101234304_init.resx">
       <DependentUpon>201606101234304_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606110208385_submitted-task-schema.resx">
+      <DependentUpon>201606110208385_submitted-task-schema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
