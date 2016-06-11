@@ -28,6 +28,9 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Flush out toolkit to include all elements and molecules used
 - [ ] Create front-end "seed data" buttons for traffic simulation
 - [ ] Implement a responsive datatable
+- [ ] Task type(think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)
+	- Think about pulling this out into a seperate table
+	- Investigate ways to use this field in step #7 as suggested...
 
 
 
