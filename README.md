@@ -17,7 +17,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Move step 3's buttons to the main navigation bar
 - [ ] Wire buttons up to load different content in modal
 - [x] Flush out data model using EF
-- [ ] Seed data for table using Faker library
+- [x] Seed data for table using Faker library
 - [ ] Update jQuery datatable to use correct columns
 - [ ] Implement automapper to assist with domain -> dto -> vm mappings
 - [ ] Wire up jQuery datatable to pull up-to-date data from an API endpoint
