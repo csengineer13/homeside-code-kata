@@ -11,7 +11,8 @@ namespace CodeKata.Domain
         {
         }
 
-        public DbSet<TestModel> TestModel { get; set; }
+        public DbSet<SubmittedTask> SubmittedTask { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<TestModel2> TestModel2 { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
