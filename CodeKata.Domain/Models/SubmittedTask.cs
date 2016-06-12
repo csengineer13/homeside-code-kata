@@ -24,7 +24,6 @@ namespace CodeKata.Domain.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string FilePathURL { get; set; }
         public TaskStatus Status { get; set; }
         public TaskType Type { get; set; }
         public DateTime SubmitDateTime { get; set; }
@@ -36,6 +35,7 @@ namespace CodeKata.Domain.Models
         // Ref
         public virtual User SubmittedBy { get; set; }
         public virtual User LastUpdatedBy { get; set; }
+        public virtual Attachment Attachment { get; set; }
 
         // List
         //public virtual ICollection<TestModel2> TestModel2s { get; set; } 

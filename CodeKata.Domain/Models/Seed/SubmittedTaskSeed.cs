@@ -28,7 +28,6 @@ namespace CodeKata.Domain.Models.Seed
                 .RuleFor(u => u.EndDateTime, f => f.Date.Between(recentDay.AddMinutes(120), recentDay.AddMinutes(600)))
                 .RuleFor(u => u.LastUpdatedDateTime, (f, u) => u.EndDateTime)
                 .RuleFor(u => u.LastUpdatedBy, (f, u) => u.SubmittedBy)
-                .RuleFor(u => u.FilePathURL, f => "C:\\")
                 .FinishWith((f, u) =>
                 {
                     Console.WriteLine("Submitted Task Created! Id={0}", u.Id);
