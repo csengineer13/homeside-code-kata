@@ -83,9 +83,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\Profiles\AttachmentProfile.cs" />
     <Compile Include="AutoMapper\Profiles\SubmittedTaskProfile.cs" />
     <Compile Include="AutoMapper\Profiles\UserMapping.cs" />
     <Compile Include="DTO\SubmittedTask\SubmittedTaskDto.cs" />
+    <Compile Include="DTO\SubmittedTask\SubmittedTaskFormDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

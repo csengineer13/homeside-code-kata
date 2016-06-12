@@ -31,38 +31,50 @@ namespace CodeKata.Controllers
         [HttpPost]
         public JsonResult SubmitTask(HttpPostedFileBase fileToUpload, SubmittedTaskFormDto submittedTaskForm)
         {
-            if (fileToUpload != null && fileToUpload.ContentLength > 0)
+            var fileExists = fileToUpload != null && fileToUpload.ContentLength > 0;
+            if (!fileExists)
             {
-                byte[] FileByteArray = new byte[fileToUpload.ContentLength];
-                fileToUpload.InputStream.Read(FileByteArray, 0, fileToUpload.ContentLength);
-
-                if(fileToUpload.FileName.Length > 0)
+                return Json(new
                 {
-                    return Json(new
-                    {
-                        statusCode = 200,
-                        status = fileToUpload.FileName + " was uploaded!"
-                    }, JsonRequestBehavior.AllowGet);
-
-                }
-                else
-                {
-                    return Json(new
-                    {
-                        statusCode = 400,
-                        status = "error encountered",
-                        file = fileToUpload.FileName
-                    }, JsonRequestBehavior.AllowGet);
-
-                }
+                    statusCode = 400,
+                    status = "Bad Request! Upload Failed",
+                    file = string.Empty
+                }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new
+
+            // todo: combine these into a single map? Or..
+            // todo: Easier to follow logic when separate?
+            var newAttachment = _mapper.Map<Attachment>(fileToUpload);
+            var newTask = _mapper.Map<SubmittedTask>(submittedTaskForm);
+            newTask.Attachment = newAttachment;
+
+            using (var context = new CodeKataContext())
             {
-                statusCode = 400,
-                status = "Bad Request! Upload Failed",
-                file = string.Empty
-            }, JsonRequestBehavior.AllowGet);
+                context.SubmittedTasks.Add(newTask);
+                context.SaveChanges();
+            }
+
+            if (fileToUpload.FileName.Length > 0)
+            {
+                return Json(new
+                {
+                    statusCode = 200,
+                    status = fileToUpload.FileName + " was uploaded!"
+                }, JsonRequestBehavior.AllowGet);
+
+            }
+            else
+            {
+                return Json(new
+                {
+                    statusCode = 400,
+                    status = "error encountered",
+                    file = fileToUpload.FileName
+                }, JsonRequestBehavior.AllowGet);
+
+            }
         }
+
 
         //
         // GET: /Home/SubmittedTasks

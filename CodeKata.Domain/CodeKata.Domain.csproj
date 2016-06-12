@@ -99,7 +99,16 @@
     <Compile Include="Migrations\201606110234365_table-name-change.Designer.cs">
       <DependentUpon>201606110234365_table-name-change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606121239393_attachments.cs" />
+    <Compile Include="Migrations\201606121239393_attachments.Designer.cs">
+      <DependentUpon>201606121239393_attachments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606121302062_nullable-datetimes.cs" />
+    <Compile Include="Migrations\201606121302062_nullable-datetimes.Designer.cs">
+      <DependentUpon>201606121302062_nullable-datetimes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\Seed\SubmittedTaskSeed.cs" />
     <Compile Include="Models\Seed\UserSeed.cs" />
     <Compile Include="Models\User.cs" />
@@ -116,6 +125,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606110234365_table-name-change.resx">
       <DependentUpon>201606110234365_table-name-change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606121239393_attachments.resx">
+      <DependentUpon>201606121239393_attachments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606121302062_nullable-datetimes.resx">
+      <DependentUpon>201606121302062_nullable-datetimes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
