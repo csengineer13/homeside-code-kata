@@ -398,6 +398,7 @@
     <Content Include="Toolkit\src\assets\toolkit\styles\variables\_color.scss" />
     <Content Include="Toolkit\src\assets\toolkit\styles\variables\_scale.scss" />
     <Content Include="Views\Shared\_SubmitTaskForm.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

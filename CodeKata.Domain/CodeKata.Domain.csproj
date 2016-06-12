@@ -113,7 +113,6 @@
     <Compile Include="Models\Seed\UserSeed.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\SubmittedTask.cs" />
-    <Compile Include="Models\TestModel2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

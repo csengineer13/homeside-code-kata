@@ -19,24 +19,10 @@
 </head>
 <body>
 
-    <header id="primary-header">
-        <div class="vertical-align">
-            <div class="vertical-align-contain logo-contain">
-                <h1>
-                    <a href="/" id="site-logo">Homeside</a>
-                </h1>
-            </div>
-        </div>
-
-    </header>
-
+    @Html.Partial("_Header")
 
     <main class="container body-content">
         @RenderBody()
-
-        <button class="cd-btn">Pay MIP</button>
-        <button class="cd-btn">Post Transactions</button>
-        <button class="cd-btn">Create Warehouse Line Files</button>
 
         <hr />
         <footer>

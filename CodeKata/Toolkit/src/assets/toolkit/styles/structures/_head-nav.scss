@@ -22,7 +22,44 @@
 		height: 40px;
 		width: 180px;
 		background-size: 100%;
-		margin-left: 30px;;
+		margin-left: 15px;;
+	}
+}
+
+#primary-nav {
+	display: table;
+	height: 80px;
+	margin: 0 auto;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		float: left;
+
+		a {
+			font-size: .875em;
+			font-weight: 700;
+			text-transform: uppercase;
+			color: #838385;
+			display: block;
+			position: relative;
+			overflow: hidden;
+			padding: 15px 10px;
+
+			&:visited {
+				color: #838385;
+			}
+
+			&:hover{
+				color: #f7a11a;
+				text-decoration: none;
+				outline: 0;
+			}
+		}
 	}
 }
 

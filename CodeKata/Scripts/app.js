@@ -17,8 +17,12 @@ vm.init = function()
 var bindClickEvents = function()
 {
 	//open the lateral panel
-	$('.cd-btn').on('click', function(event){
+	$('.cd-btn').on('click', function(event)
+	{
 		event.preventDefault();
+		var $target = $(event.target);
+  		console.log($target.attr('target'));
+
 		$('.modal').addClass('is-open');
 		$('body').addClass('modal-open');
 	});
