@@ -25,7 +25,6 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Pull "file" into a seperate linked table
 - [x] Move step 3's buttons to the main navigation bar [Not ideal for "actions", but will suffice for now]
 - [x] Wire buttons up to load different content in modal
-- [ ] Get correct type to save on submit
 - [ ] Add clientside validation for basic form
 - [ ] Add "toast" notifications for SubmitTask method on front-end
 - [ ] Select2 for user form select
