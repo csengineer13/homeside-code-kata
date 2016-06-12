@@ -1,24 +1,30 @@
 ﻿<div id="FormContent">
     <form id="FormUpload" enctype="multipart/form-data" method="post">
 
+        <div style="visibility: hidden;">
+            <select name="TaskType" id="TaskType" style="visibility: hidden;">
+                <option value="PayMIP">Pay MIP</option>
+                <option value="PostTransactions">Post Transactions</option>
+                <option value="CreateWarehouseLineFile">Create Warehouse Line File</option>
+            </select>
+        </div>
+        <div>
+                    <label>Task Name</label>
+                    <input type="text" name="TaskName" id="TaskName" />
+                </div>
+                <div>
+                    <label>Task Description</label>
+                    <input type="text" name="TaskDescription" id="TaskDescription" />
+                </div>
+                <!-- Type, determined by entry button -->
+                <!-- SubmittedBy... Select2 dropdown and ID -->
+                <div>
+                    <label>CSV File</label>
+                    <input type="file" name="FileToUpload" id="FileToUpload" />
+                </div>
 
-        <div>
-            <label>Task Name</label>
-            <input type="text" name="TaskName" id="TaskName"/>
-        </div>
-        <div>
-            <label>Task Description</label>
-            <input type="text" name="TaskDescription" id="TaskDescription"/>
-        </div>
-        <!-- Type, determined by entry button -->
-        <!-- SubmittedBy... Select2 dropdown and ID -->
-        <div>
-            <label>CSV File</label>
-            <input type="file" name="FileToUpload" id="FileToUpload"/>
-        </div>
-
-        <button type="button" id="Submit_btn">Submit Task</button>
-        <button id="Cancel_btn">close</button>
+                <button type="button" id="Submit_btn">Submit Task</button>
+                <button id="Cancel_btn">close</button>
     </form>
 
     <div class="progress CustomProgress">

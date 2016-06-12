@@ -14,6 +14,25 @@ vm.init = function()
 	bindDataTable();
 };
 
+vm.setTaskType = function(taskType)
+{
+	$("#TaskType").val(taskType);
+
+	switch(taskType) {
+	    case "PayMIP":
+	        $(".modal-header h3").text("Pay MIP");
+	        break;
+	    case "PostTransactions":
+	        $(".modal-header h3").text("Post Transactions");
+	        break;
+	    case "CreateWarehouseLineFile":
+	        $(".modal-header h3").text("Create Warehouse Line File");
+	        break;
+	    default:
+	        $(".modal-header h3").text("No Task Set");
+	}
+};
+
 var bindClickEvents = function()
 {
 	//open the lateral panel
@@ -21,7 +40,7 @@ var bindClickEvents = function()
 	{
 		event.preventDefault();
 		var $target = $(event.target);
-  		console.log($target.attr('target'));
+  		vm.setTaskType($target.attr('target'));
 
 		$('.modal').addClass('is-open');
 		$('body').addClass('modal-open');
@@ -133,6 +152,9 @@ function UploadFile()
 
     var fileToUpload = $('#FileToUpload').prop('files')[0];
     formData.append("fileToUpload", fileToUpload, fileToUpload.name);
+
+    var TaskType = $("#TaskType").val();
+    formData.append("Type", TaskType);
 
     var TaskName = $("#TaskName").val();
     formData.append("Name", TaskName);

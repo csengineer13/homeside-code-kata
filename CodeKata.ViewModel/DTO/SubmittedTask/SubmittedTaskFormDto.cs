@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using CodeKata.Domain.Models;
 
 namespace CodeKata.ViewModel.DTO.SubmittedTask
 {
@@ -9,5 +10,6 @@ namespace CodeKata.ViewModel.DTO.SubmittedTask
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public TaskType Type { get; set; }
     }
 }
