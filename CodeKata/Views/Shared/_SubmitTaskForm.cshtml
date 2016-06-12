@@ -1,23 +1,26 @@
 ﻿<div id="FormContent">
-    <form id="FormUpload"
-          enctype="multipart/form-data" method="post">
-        <span class="btn btn-success fileinput-button">
-            <i class="glyphicon glyphicon-plus"></i>
-            <span>Add files...</span>
-            <input type="file"
-                   name="UploadedFile" id="UploadedFile" />
-        </span>
-        <button class="btn btn-primary start"
-                type="button" id="Submit_btn">
-            <i class="glyphicon glyphicon-upload"></i>
-            <span>Start upload</span>
-        </button>
-        <button class="btn btn-warning cancel"
-                type="button" id="Cancel_btn">
-            <i class="glyphicon glyphicon-ban-circle"></i>
-            <span>close</span>
-        </button>
+    <form id="FormUpload" enctype="multipart/form-data" method="post">
+
+
+        <div>
+            <label>Task Name</label>
+            <input type="text" name="TaskName" id="TaskName"/>
+        </div>
+        <div>
+            <label>Task Description</label>
+            <input type="text" name="TaskDescription" id="TaskDescription"/>
+        </div>
+        <!-- Type, determined by entry button -->
+        <!-- SubmittedBy... Select2 dropdown and ID -->
+        <div>
+            <label>CSV File</label>
+            <input type="file" name="FileToUpload" id="FileToUpload"/>
+        </div>
+
+        <button type="button" id="Submit_btn">Submit Task</button>
+        <button id="Cancel_btn">close</button>
     </form>
+
     <div class="progress CustomProgress">
         <div id="FileProgress"
              class="progress-bar" role="progressbar"
@@ -26,6 +29,7 @@
             <span></span>
         </div>
     </div>
+
     <div class="InfoContainer">
         <div id="Imagecontainer"></div>
         <div id="FileName" class="info">

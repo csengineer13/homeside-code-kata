@@ -83,7 +83,7 @@ var bindDataTable = function()
 function singleFileSelected(evt) {
     //var selectedFile = evt.target.files can use this  or select input file element 
     //and access it's files object
-    var selectedFile = ($("#UploadedFile"))[0].files[0];//FileControl.files[0];
+    var selectedFile = ($("#FileToUpload"))[0].files[0];//FileControl.files[0];
     if (selectedFile) {
         var FileSize = 0;
         var imageType = /image.*/;
@@ -119,15 +119,26 @@ function singleFileSelected(evt) {
     }
 }
 
-function UploadFile() {
-    //we can create form by passing the form to Constructor of formData object
-    //or creating it manually using append function 
-    //but please note file name should be same like the action Parameter
-    //var dataString = new FormData();
-    //dataString.append("UploadedFile", selectedFile);
+function UploadFile() 
+{
+	// 
+    // Build our "Form Data" object
+    // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+    // https://developer.mozilla.org/en-US/docs/Web/API/FormData/append
+    var formData = new FormData();
 
-    var form = $('#FormUpload')[0];
-    var dataString = new FormData(form);
+    var fileToUpload = $('#FileToUpload').prop('files')[0];
+    formData.append("fileToUpload", fileToUpload, fileToUpload.name);
+
+    var TaskName = $("#TaskName").val();
+    formData.append("Name", TaskName);
+
+    var TaskDescription = $("#TaskDescription").val();
+    formData.append("Description", TaskDescription);
+    
+    //
+    // POST
+    //
     $.ajax({
         url: '/Home/SubmitTask',  //Server script to process data
         type: 'POST',
@@ -135,7 +146,8 @@ function UploadFile() {
             var myXhr = $.ajaxSettings.xhr();
             if (myXhr.upload) { // Check if upload property exists
                 //myXhr.upload.onprogress = progressHandlingFunction
-                myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
+                // For handling the progress of the upload
+                myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
             }
             return myXhr;
         },
@@ -144,7 +156,7 @@ function UploadFile() {
         error: function(data){ console.log("error"); console.log(data); },
         complete: function(data){ console.log("complete"); console.log(data); },
         // Form data
-        data: dataString,
+        data: formData,
         //Options to tell jQuery not to process data or worry about content-type.
         cache: false,
         contentType: false,

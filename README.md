@@ -24,6 +24,8 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Create AJAX endpoint for file upload
 - [ ] Setup basic submission form
 - [ ] Pass data AND file, create basic new entry, refresh table's data
+- [ ] Pull "file" into a seperate linked table
+- [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
 
 
 #### Housecleaning: Bonus
@@ -39,7 +41,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Add quick filters for datatable (status)
 - [ ] Add a more obvious differentiatior for status (color / shape / icon)
 - [ ] Enhance seed data (timestamps and states match up)
-- [ ] Explor datatable configuration properties
+- [ ] Explore datatable configuration properties
 
 
 
