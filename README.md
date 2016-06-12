@@ -14,8 +14,6 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Begin building out "gohomeside.com theme" in SASS by matching color palletes
 - [x] Material design: start with buttons, slide pane, grid, main layout
 - [x] Create "dummy" buttons that open slide pane to finish steps 2 and 3
-- [ ] Move step 3's buttons to the main navigation bar
-- [ ] Wire buttons up to load different content in modal
 - [x] Flush out data model using EF
 - [x] Seed data for table using Faker library
 - [x] Update jQuery datatable to use correct columns
@@ -25,10 +23,14 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Setup basic submission form
 - [x] Pass data AND file, create basic new entry, refresh table's data
 - [x] Pull "file" into a seperate linked table
-- [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
+- [ ] Move step 3's buttons to the main navigation bar [Not ideal for "actions", but will suffice for now]
+- [ ] Wire buttons up to load different content in modal
 - [ ] Add clientside validation for basic form
 - [ ] Add "toast" notifications for SubmitTask method on front-end
--
+- [ ] Select2 for user form select
+- [ ] Clean form and toast stylings
+- [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
+	- Need a way to retrieve file from stored Byte Array
 
 
 #### Housecleaning: Bonus
@@ -45,6 +47,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Add a more obvious differentiatior for status (color / shape / icon)
 - [ ] Enhance seed data (timestamps and states match up)
 - [ ] Explore datatable configuration properties
+- [ ] Drag & Drop upload
 
 
 
