@@ -362,7 +362,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_DataTable.cshtml" />
+    <Content Include="Views\Home\_DataTable.cshtml" />
     <Content Include="Toolkit\src\assets\fabricator\styles\fabricator.scss" />
     <Content Include="Toolkit\src\assets\fabricator\styles\partials\_code.scss" />
     <Content Include="Toolkit\src\assets\fabricator\styles\partials\_color-chips.scss" />
@@ -397,6 +397,7 @@
     <Content Include="Toolkit\src\assets\toolkit\styles\variables\_breakpoints.scss" />
     <Content Include="Toolkit\src\assets\toolkit\styles\variables\_color.scss" />
     <Content Include="Toolkit\src\assets\toolkit\styles\variables\_scale.scss" />
+    <Content Include="Views\Shared\_SubmitTaskForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
