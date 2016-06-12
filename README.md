@@ -21,13 +21,14 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Update jQuery datatable to use correct columns
 - [x] Implement automapper to assist with domain -> dto -> vm mappings
 - [x] Wire up jQuery datatable to pull up-to-date data from an API endpoint
-- [ ] Create AJAX endpoint for file upload
-- [ ] Setup basic submission form
-- [ ] Pass data AND file, create basic new entry, refresh table's data
-- [ ] Pull "file" into a seperate linked table
+- [x] Create AJAX endpoint for file upload
+- [x] Setup basic submission form
+- [x] Pass data AND file, create basic new entry, refresh table's data
+- [x] Pull "file" into a seperate linked table
 - [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
 - [ ] Add clientside validation for basic form
 - [ ] Add "toast" notifications for SubmitTask method on front-end
+-
 
 
 #### Housecleaning: Bonus
@@ -54,8 +55,8 @@ Goal of this exercise is to build a web portal that allows all departments to up
 1. ~~MVC .net 4.6, c#, entity framework, sql server 2014 express, git (source control)~~
 2. ~~Build a portal (no authentication) that uses our (gohomeside.com) theme.~~
 3. ~~User interface should have buttons / options for “Pay MIP”, ”Post Transactions”, “Create warehouse line file”~~
-4. Action for each option will allow the user to upload a csv file and submit the task
-5. Each submission should create a new task in the database with the following (create a normalized data scheme)
+4. ~~Action for each option will allow the user to upload a csv file and submit the task~~
+5. ~~Each submission should create a new task in the database with the following (create a normalized data scheme)~~
   * ~~Task type (think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)~~
   * ~~Task name~~
   * ~~Task description~~
