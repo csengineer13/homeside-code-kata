@@ -26,6 +26,8 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Pass data AND file, create basic new entry, refresh table's data
 - [ ] Pull "file" into a seperate linked table
 - [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
+- [ ] Add clientside validation for basic form
+- [ ] Add "toast" notifications for SubmitTask method on front-end
 
 
 #### Housecleaning: Bonus

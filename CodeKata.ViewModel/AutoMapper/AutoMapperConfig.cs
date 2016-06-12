@@ -14,6 +14,7 @@ namespace CodeKata.ViewModel
         {
             MapperConfiguration = new MapperConfiguration(cfg => {
                 cfg.AddProfile(new SubmittedTaskProfile());
+                cfg.AddProfile(new AttachmentProfile());
             });
         }
     }
