@@ -17,6 +17,17 @@ namespace CodeKata.WindowsService
             InitializeComponent();
         }
 
+        [Conditional("DEBUG_SERVICE")]
+        private static void DebugMode()
+        {
+            Debugger.Break();
+        }
+
+        public void OnDebug()
+        {
+            OnStart(null);
+        }
+
         protected override void OnStart(string[] args)
         {
         }
