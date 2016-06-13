@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -22,6 +23,7 @@ namespace CodeKata.WindowsService
         private static string _sqlConnectionString;
 
         public static System.Timers.Timer GetSubmittedTasksTimer = new System.Timers.Timer();
+        public static ConcurrentDictionary<int, SubmittedTask> _concurrentSubmittedTasks = new ConcurrentDictionary<int, SubmittedTask>(); 
 
         public Service1()
         {
@@ -117,20 +119,62 @@ namespace CodeKata.WindowsService
             try
             {
                 var allQueuedTasks = SubmittedTask.GetTasksByStatus(TaskStatus.Queued);
-                
                 // Update statistics with jobs in queue for "being worked on" ???
-                // await Pass to "ProcessTask"
-                // In ConcDict? Try Update
-                // Not? Try Add
-                // If different/dirty? Add to Update Queue
-                // Don't add if in "end state"
-                // Simply remove as non-working
-
+                foreach (SubmittedTask task in allQueuedTasks)
+                {
+                    await ProcessSubmittedTask(task);
+                }
             }
             catch (Exception ex)
             {
-                
+                Console.WriteLine("Error: Unable to query DB for submitted tasks.");
+                EventLog.WriteEntry(_eventLogSource, ex.Message, EventLogEntryType.Error);
             }
+        }
+
+        private static Task ProcessSubmittedTask(SubmittedTask task)
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    // Background permenant thread updating dirty dictionary
+                    // Questions? Can there ever be overlap or concurrency issues?
+
+                    // todo: ALL OF THIS
+                    // Update to "processing"
+                    // Update ConcurrentDictionary
+                    // Add to DirtyConcurrentDictionary
+
+                    // AWAIT :: Kick off any child actions?
+
+                    // Update to "finished"
+                    // Update ConcurrentDictionary
+                    // Add to DirtyConcurrentDictionary
+
+                    // On update loop, when saving Dirty item in "finished" status,
+                    // We can remove from both dictionaries
+
+                    SubmittedTask oldTask;
+                    // If exists, update
+                    if (_concurrentSubmittedTasks.ContainsKey(task.Id))
+                    {
+                        if (_concurrentSubmittedTasks.TryGetValue(task.Id, out oldTask))
+                            _concurrentSubmittedTasks.TryUpdate(task.Id, task, oldTask);
+                    }
+                    // If new, add
+                    else
+                    {
+                        _concurrentSubmittedTasks.TryAdd(task.Id, task);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: Unable to process a submitted task.");
+                    EventLog.WriteEntry(_eventLogSource, ex.Message, EventLogEntryType.Error);
+                }
+            });
         }
 
         protected override void OnStop()
