@@ -10,7 +10,9 @@ namespace CodeKata
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                     "~/bower_components/jquery/dist/jquery.min.js",
-                    "~/bower_components/datatables.net/js/jquery.dataTables.min.js"));
+                    "~/bower_components/datatables.net/js/jquery.dataTables.min.js",
+                    "~/bower_components/select2/dist/js/select2.min.js" // Full option available
+                    ));
 
             bundles.Add(new ScriptBundle("~/bundles/application").Include(
                     "~/Scripts/app.js"));
@@ -22,8 +24,10 @@ namespace CodeKata
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                     "~/bower_components/datatables.net-dt/css/jquery.dataTables.min.css",
+                    "~/bower_components/select2/dist/css/select2.min.css",
                     "~/Toolkit/dist/assets/toolkit/styles/toolkit.css",
-                    "~/Content/site.css"));
+                    "~/Content/site.css"
+                    ));
         }
     }
 }

@@ -9,22 +9,24 @@
             </select>
         </div>
         <div>
-                    <label>Task Name</label>
-                    <input type="text" name="TaskName" id="TaskName" />
-                </div>
-                <div>
-                    <label>Task Description</label>
-                    <input type="text" name="TaskDescription" id="TaskDescription" />
-                </div>
-                <!-- Type, determined by entry button -->
-                <!-- SubmittedBy... Select2 dropdown and ID -->
-                <div>
-                    <label>CSV File</label>
-                    <input type="file" name="FileToUpload" id="FileToUpload" />
-                </div>
+            <label>User Submitting Task</label>
+            <select name="TaskUser" id="TaskUser" style="width: 100%"></select>
+        </div>
+        <div>
+            <label>Task Name</label>
+            <input type="text" name="TaskName" id="TaskName" />
+        </div>
+        <div>
+            <label>Task Description</label>
+            <input type="text" name="TaskDescription" id="TaskDescription" />
+        </div>
+        <div>
+            <label>CSV File</label>
+            <input type="file" name="FileToUpload" id="FileToUpload" />
+        </div>
 
-                <button type="button" id="Submit_btn">Submit Task</button>
-                <button id="Cancel_btn">close</button>
+        <button type="button" id="Submit_btn">Submit Task</button>
+        <button id="Cancel_btn">close</button>
     </form>
 
     <div class="progress CustomProgress">

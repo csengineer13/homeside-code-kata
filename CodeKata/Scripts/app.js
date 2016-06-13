@@ -11,6 +11,7 @@ var vm = {};
 vm.init = function()
 {
 	bindClickEvents();
+	bindSelect2();
 	bindDataTable();
 };
 
@@ -56,8 +57,55 @@ var bindClickEvents = function()
 			event.preventDefault();
 		}
 	});
-
 };
+
+var bindSelect2 = function()
+{
+	$("#TaskUser").select2(
+		{
+			ajax: {
+				url: "/Home/GetUsers",
+				dataType: 'json',
+				delay: 250, // debounce term search
+				data: function(params){
+					return {
+						searchTerm: params.term, // search term
+						page: params.page
+					};
+				},
+				processResults: function(data, params){
+					// You can parse results into your expected format here
+				
+					params.page = params.page || 1;
+
+					return {
+						results: data.items,
+						pagination: {
+							more: (params.page * 30) < data.total_count
+						}
+					};
+				},
+				cache: true
+			},
+			placeholder: "Search by name",
+			allowClear: true,
+			templateResult: function(userDto){
+				if(!userDto.Name) { return userDto.text; }
+				var $userDto = $(
+					'<div><b>' + userDto.Name + '</b></div><div>' + userDto.EmployeeId + '</div>'
+					);
+				return $userDto;
+			},
+			templateSelection: function(userDto){
+				console.log(userDto);
+				if(!userDto.Name) { return userDto.text; }
+				var $userDto = $(
+					'<div>' + userDto.Name + '</div>'
+					);
+				return $userDto;
+			}
+		});
+}
 
 var bindDataTable = function()
 {
