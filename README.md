@@ -48,6 +48,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Enhance seed data (timestamps and states match up)
 - [ ] Explore datatable configuration properties
 - [ ] Drag & Drop upload
+- [ ] Shift REST API endpoints to Web API controllers
 
 
 
