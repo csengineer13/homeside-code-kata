@@ -10,6 +10,8 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using CodeKata.Domain.Models;
+using TaskStatus = CodeKata.Domain.Models.TaskStatus;
 
 namespace CodeKata.WindowsService
 {
@@ -55,7 +57,7 @@ namespace CodeKata.WindowsService
                 var connectionString = ConfigurationManager.ConnectionStrings["CodeKataContext"].ConnectionString;
                 SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder(connectionString);
                 _sqlConnectionString = sqlBuilder.ConnectionString;
-                // StartTimers();
+                StartTimers();
             }
             catch (Exception ex)
             {
@@ -73,10 +75,22 @@ namespace CodeKata.WindowsService
 
             //
             GetSubmittedTasksTimer.Elapsed += GetSubmittedTasksTimer_Elapsed;
-            GetSubmittedTasksTimer.Interval = 10000; // Every 10 seconds
+            GetSubmittedTasksTimer.Interval = 5000; // Every 10 seconds
             GetSubmittedTasksTimer.Start();
         
             // todo: connection pool cleanup task?
+
+            // Forever running threads
+            Task.Run(() =>
+            {
+                var hello = 0;
+                while (_applicationIsRunning)
+                {
+                    // Spin up tasks to update dirty task entries in DB
+                    hello++;
+                    Thread.Sleep(1000);
+                }
+            });
         }
 
         // Method called when timer elapses
@@ -86,7 +100,7 @@ namespace CodeKata.WindowsService
 
             try
             {
-                // Update statistics
+                // todo: Update statistics
                 await ImportNewSubmittedTasks();
             }
             catch (Exception ex)
@@ -102,14 +116,15 @@ namespace CodeKata.WindowsService
         {
             try
             {
-                // Find tasks that are marked as submitted
+                var allQueuedTasks = SubmittedTask.GetTasksByStatus(TaskStatus.Queued);
+                
                 // Update statistics with jobs in queue for "being worked on" ???
                 // await Pass to "ProcessTask"
-                    // In ConcDict? Try Update
-                    // Not? Try Add
-                    // If different/dirty? Add to Update Queue
-                        // Don't add if in "end state"
-                        // Simply remove as non-working
+                // In ConcDict? Try Update
+                // Not? Try Add
+                // If different/dirty? Add to Update Queue
+                // Don't add if in "end state"
+                // Simply remove as non-working
 
             }
             catch (Exception ex)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CodeKata.Domain.Models
@@ -39,5 +40,19 @@ namespace CodeKata.Domain.Models
 
         // List
         //public virtual ICollection<TestModel2> TestModel2s { get; set; } 
+
+
+        // WinService Methods
+        public static List<SubmittedTask> GetTasksByStatus(TaskStatus taskStatus)
+        {
+            using (var context = new CodeKataContext())
+            {
+                return context.SubmittedTasks
+                    .Include("LastUpdatedBy")
+                    .Include("SubmittedBy")
+                    .Where(tsk => tsk.Status == taskStatus)
+                    .ToList();
+            }
+        } 
     }
 }
