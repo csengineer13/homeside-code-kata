@@ -8,14 +8,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CodeKata.WindowsService
 {
     public partial class Service1 : ServiceBase
     {
+        private static bool _applicationIsRunning = false;
         private static string _eventLogSource = "CodeKata";
         private static string _sqlConnectionString;
+
+        public static System.Timers.Timer GetSubmittedTasksTimer = new System.Timers.Timer();
 
         public Service1()
         {
@@ -61,9 +65,64 @@ namespace CodeKata.WindowsService
             }
         }
 
+        public void StartTimers()
+        {
+            // Generally a good idea to put a cap in place
+            ThreadPool.SetMaxThreads(50, 50);
+            _applicationIsRunning = true;
+
+            //
+            GetSubmittedTasksTimer.Elapsed += GetSubmittedTasksTimer_Elapsed;
+            GetSubmittedTasksTimer.Interval = 10000; // Every 10 seconds
+            GetSubmittedTasksTimer.Start();
+        
+            // todo: connection pool cleanup task?
+        }
+
+        // Method called when timer elapses
+        async void GetSubmittedTasksTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            GetSubmittedTasksTimer.Stop(); // Pause while running
+
+            try
+            {
+                // Update statistics
+                await ImportNewSubmittedTasks();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: Unable to import newly submitted tasks.");
+                EventLog.WriteEntry(_eventLogSource, ex.Message, EventLogEntryType.Error);
+            }
+
+            GetSubmittedTasksTimer.Start();
+        }
+
+        public static async Task ImportNewSubmittedTasks()
+        {
+            try
+            {
+                // Find tasks that are marked as submitted
+                // Update statistics with jobs in queue for "being worked on" ???
+                // await Pass to "ProcessTask"
+                    // In ConcDict? Try Update
+                    // Not? Try Add
+                    // If different/dirty? Add to Update Queue
+                        // Don't add if in "end state"
+                        // Simply remove as non-working
+
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
         protected override void OnStop()
         {
             // Stop any timers
+            GetSubmittedTasksTimer.Stop();
+            _applicationIsRunning = false;
             // Kill monitor service
         }
     }
