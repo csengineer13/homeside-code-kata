@@ -15,6 +15,32 @@ vm.init = function()
 	bindDataTable();
 };
 
+vm.Notifications = {
+	add: function(message, type, id){
+		// info, success, warning, error
+		$newNotification = '<div class="notification notification--' + type + '">' + message + '</div>';
+		$(".notification-container").append($newNotification);
+
+		setTimeout(function(){ vm.Notifications.removeOldest(); }, 3000);
+	},
+	removeOldest: function(){
+		$(".notification-container").find('.notification:first').remove();
+	},
+	removeAll: function(){
+		$(".notification-container").html("");
+	}
+};
+
+vm.Form = {
+	clear: function(){
+		$("#TaskType").val("");
+	    $("#SubmittedBy").select2('val', 'All');
+		$("#TaskName").val("");
+		$("#TaskDescription").val("");
+	    $('#FileToUpload').val("");
+	}
+};
+
 vm.setTaskType = function(taskType)
 {
 	$("#TaskType").val(taskType);
@@ -54,6 +80,7 @@ var bindClickEvents = function()
 			$('.modal').removeClass('is-open');
 			
 			$('body').removeClass('modal-open');
+			vm.Form.clear();
 			event.preventDefault();
 		}
 	});
@@ -111,7 +138,7 @@ var bindSelect2 = function()
 var bindDataTable = function()
 {
 	// kickstart jQuery DataTable
-    $('#example').DataTable({
+    var table = $('#example').DataTable({
     	"ajax": '/Home/SubmittedTasks',
     	"order": [[ 4, "desc" ]],
     	"columnDefs": [{
@@ -147,6 +174,12 @@ var bindDataTable = function()
 		  	"data": "FileURL"
 		  }]
     });
+
+ 	// Refresh every x seconds
+	setInterval( function () {
+    	table.ajax.reload( null, false ); // user paging is not reset on reload
+    	vm.Notifications.add("Table data has been refreshed", "info", 0);
+	}, 120000 ); // 2-minutes
 };
 
 
@@ -198,21 +231,52 @@ function UploadFile()
     // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
     // https://developer.mozilla.org/en-US/docs/Web/API/FormData/append
     var formData = new FormData();
-
-    var SubmittedBy = $('#SubmittedBy').val();
-    formData.append("SubmittedById", SubmittedBy);
-
-    var fileToUpload = $('#FileToUpload').prop('files')[0];
-    formData.append("fileToUpload", fileToUpload, fileToUpload.name);
-
     var TaskType = $("#TaskType").val();
+    var SubmittedBy = $('#SubmittedBy').val();
+	var TaskName = $("#TaskName").val();
+	var TaskDescription = $("#TaskDescription").val();
+    var fileToUpload = $('#FileToUpload').prop('files')[0];
+
+
+    // Validation
+    if(TaskType != "PayMIP" && TaskType != "PostTransactions" && TaskType != "CreateWarehouseLineFile")
+    {
+    	var message = "An unsupported Task Type is selected.";
+    	vm.Notifications.add(message, "error", 0);
+    	return;
+    }
+
+    if(SubmittedBy == null || isNaN(parseInt(SubmittedBy))){
+    	var message = "You must select a user before submitting a task.";
+    	vm.Notifications.add(message, "error", 0);
+    	return;
+    }
+
+    if(TaskName == ""){
+    	var message = "The Task Name field cannot be left empty.";
+    	vm.Notifications.add(message, "error", 0);
+    	return;
+    }
+
+    if(TaskDescription == ""){
+    	var message = "The Task Description field cannot be left empty.";
+    	vm.Notifications.add(message, "error", 0);
+    	return;
+    }
+
+    if(!fileToUpload){
+    	var message = "You must select a file to upload before submitting a task.";
+    	vm.Notifications.add(message, "error", 0);
+    	return;
+    }
+
+
+    // Add to form
+    formData.append("SubmittedById", SubmittedBy);
     formData.append("Type", TaskType);
-
-    var TaskName = $("#TaskName").val();
     formData.append("Name", TaskName);
-
-    var TaskDescription = $("#TaskDescription").val();
     formData.append("Description", TaskDescription);
+    formData.append("fileToUpload", fileToUpload, fileToUpload.name);
     
     //
     // POST
@@ -225,14 +289,29 @@ function UploadFile()
             if (myXhr.upload) { // Check if upload property exists
                 //myXhr.upload.onprogress = progressHandlingFunction
                 // For handling the progress of the upload
-                myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                // todo: implement? Maybe only for image and more complex file types
+                //myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
             }
             return myXhr;
         },
         //Ajax events
-        success: function(data){ console.log("success"); console.log(data); },
-        error: function(data){ console.log("error"); console.log(data); },
-        complete: function(data){ console.log("complete"); console.log(data); },
+        success: function(data)
+        { 
+        	// Refresh table
+        	$('#example').DataTable().ajax.reload();
+        	// Close pane
+        	$('.modal').trigger("click");
+        	// Clear pane's form fields
+			vm.Form.clear();
+        	// Toast notification
+        	vm.Notifications.add(data.Message, "success", 0);
+        	console.log(data); 
+        },
+        error: function(data){ 
+        	// Toast notification
+        	console.log(data); 
+        },
+        //complete: function(data){ console.log("complete"); console.log(data); },
         // Form data
         data: formData,
         //Options to tell jQuery not to process data or worry about content-type.

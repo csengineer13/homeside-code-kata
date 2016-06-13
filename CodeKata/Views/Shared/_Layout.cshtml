@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Task Submission Portal</title>
 
     <!-- "Proxima-Nova" font stolen from GoHomeside website -->
     <script src="https://use.typekit.net/oly6zag.js"></script>
@@ -19,15 +19,17 @@
 </head>
 <body>
 
+    <section class="notification-container"></section>
+
     @Html.Partial("_Header")
 
     <main class="container body-content">
         @RenderBody()
 
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
     </main>
 
     <div class="modal from-right">

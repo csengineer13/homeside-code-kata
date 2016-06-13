@@ -1,0 +1,27 @@
+.notification-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 75%;
+	margin: 0 auto;
+
+	@include z-10;
+}
+
+.notification {
+	width: 100%;
+	padding: 15px;
+	color: #FFFFFF;
+	font-weight: 700;
+	letter-spacing: .75px;
+	margin-top: 10px;
+	border-radius: 7px;
+
+	opacity: .8;
+
+	&.notification--info { background-color: #1A739F; }
+	&.notification--success { background-color: #97CC04; }
+	&.notification--warning { background-color: #F18F01; }
+	&.notification--error { background-color: #F44E3F; }
+}

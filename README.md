@@ -25,18 +25,24 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Pull "file" into a seperate linked table
 - [x] Move step 3's buttons to the main navigation bar [Not ideal for "actions", but will suffice for now]
 - [x] Wire buttons up to load different content in modal
-- [ ] Add clientside validation for basic form
-- [ ] Add "toast" notifications for SubmitTask method on front-end
 - [x] Select2 for user form select
-- [ ] Clean form and toast stylings
+- [x] Clean form
+- [x] Add "toast" notifications for SubmitTask method on front-end
+- [x] Add clientside validation for basic form
+- [ ] Data annotations on DTO, and check for server side valid
+  - Maybe a catch-all try-catch as well for upload
+- [ ] Check to see how "errors" are returned with JsonNetResult
+  - May have to key off of returned "statusCode" to determine error level (or add errorLevel field to the VM)
+- [ ] Better form button styling
 - [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
 	- Need a way to retrieve file from stored Byte Array
+- [ ] Begin to create WindowsService Project
 
 
 #### Housecleaning: Bonus
+- [x] SubmitTaskDto -> In AfterMap... Use EF's "Attach" method in place of "ResolveUserById" to prevent insert of existing user on save
+  - http://stackoverflow.com/questions/13003345/how-can-i-prevent-ef-from-inserting-an-object-that-already-exists-in-the-db-when
 - [ ] Enhance theme further (datatable, headings, hover effects, etc.)
-- [ ] Flush out toolkit to include all elements and molecules used
-- [ ] Create front-end "seed data" buttons for traffic simulation
 - [ ] Implement a responsive datatable
 - [ ] Task type(think about using this in #7 to create a structure that will us to plug in different actions or automations for each type)
 	- Think about pulling this out into a seperate table
@@ -49,8 +55,10 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Explore datatable configuration properties
 - [ ] Drag & Drop upload
 - [ ] Shift REST API endpoints to Web API controllers
-- [x] SubmitTaskDto -> In AfterMap... Use EF's "Attach" method in place of "ResolveUserById" to prevent insert of existing user on save
-  - http://stackoverflow.com/questions/13003345/how-can-i-prevent-ef-from-inserting-an-object-that-already-exists-in-the-db-when
+- [ ] Flush out toolkit to include all elements and molecules used
+- [ ] Create front-end "seed data" buttons for traffic simulation
+- [ ] Polish notification removal to "fade out"
+  - [ ] Polish further with dismiss and dismiss all buttons
 
 
 

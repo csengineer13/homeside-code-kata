@@ -4,7 +4,7 @@ body.modal-open {
 }
 
 .modal {
-	@include z-10;
+	@include z-9;
 	position: fixed;
 	height: 100%;
 	width: 100%;
