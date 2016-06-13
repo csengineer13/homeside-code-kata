@@ -87,6 +87,7 @@
     <Compile Include="AutoMapper\Profiles\AttachmentProfile.cs" />
     <Compile Include="AutoMapper\Profiles\SubmittedTaskProfile.cs" />
     <Compile Include="AutoMapper\Profiles\UserProfile.cs" />
+    <Compile Include="Common\Notification.cs" />
     <Compile Include="DTO\SubmittedTask\SubmittedTaskDto.cs" />
     <Compile Include="DTO\SubmittedTask\SubmittedTaskFormDto.cs" />
     <Compile Include="DTO\User\UserSearchDto.cs" />

@@ -7,6 +7,7 @@ using CodeKata.Common;
 using CodeKata.Domain;
 using CodeKata.Domain.Models;
 using CodeKata.ViewModel;
+using CodeKata.ViewModel.Common;
 using CodeKata.ViewModel.DTO;
 using CodeKata.ViewModel.DTO.SubmittedTask;
 
@@ -26,17 +27,15 @@ namespace CodeKata.Controllers
         }
 
         [HttpPost]
-        public JsonResult SubmitTask(HttpPostedFileBase fileToUpload, SubmittedTaskFormDto submittedTaskForm)
+        public ActionResult SubmitTask(HttpPostedFileBase fileToUpload, SubmittedTaskFormDto submittedTaskForm)
         {
             var fileExists = fileToUpload != null && fileToUpload.ContentLength > 0;
             if (!fileExists)
             {
-                return Json(new
+                return new JsonNetResult
                 {
-                    statusCode = 400,
-                    status = "Bad Request! Upload Failed",
-                    file = string.Empty
-                }, JsonRequestBehavior.AllowGet);
+                    Data = new Notification(400, "Bad Request! Upload Failed")
+                };
             }
 
             // todo: combine these into a single map? Or..
@@ -61,25 +60,10 @@ namespace CodeKata.Controllers
                 context.SaveChanges();
             }
 
-            if (fileToUpload.FileName.Length > 0)
+            return new JsonNetResult
             {
-                return Json(new
-                {
-                    statusCode = 200,
-                    status = fileToUpload.FileName + " was uploaded!"
-                }, JsonRequestBehavior.AllowGet);
-
-            }
-            else
-            {
-                return Json(new
-                {
-                    statusCode = 400,
-                    status = "error encountered",
-                    file = fileToUpload.FileName
-                }, JsonRequestBehavior.AllowGet);
-
-            }
+                Data = new Notification(200, "Task submitted successfully!")
+            };
         }
 
 
