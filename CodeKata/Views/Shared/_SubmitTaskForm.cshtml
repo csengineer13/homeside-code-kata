@@ -8,25 +8,21 @@
                 <option value="CreateWarehouseLineFile">Create Warehouse Line File</option>
             </select>
         </div>
-        <div>
-            <label>User Submitting Task</label>
+        <div class="form-group">
             <select name="SubmittedBy" id="SubmittedBy" style="width: 100%"></select>
         </div>
-        <div>
-            <label>Task Name</label>
-            <input type="text" name="TaskName" id="TaskName" />
+        <div class="form-group">
+            <input type="text" name="TaskName" id="TaskName" placeholder="Task Name" />
         </div>
-        <div>
-            <label>Task Description</label>
-            <input type="text" name="TaskDescription" id="TaskDescription" />
+        <div class="form-group">
+            <input type="text" name="TaskDescription" id="TaskDescription" placeholder="Task Description" />
         </div>
-        <div>
-            <label>CSV File</label>
+        <div class="form-group">
             <input type="file" name="FileToUpload" id="FileToUpload" />
         </div>
 
         <button type="button" id="Submit_btn">Submit Task</button>
-        <button id="Cancel_btn">close</button>
+        <button id="Close_btn">Close</button>
     </form>
 
     <div class="progress CustomProgress">
@@ -47,4 +43,6 @@
         <div id="FileSize" class="info">
         </div>
     </div>
+
+    <p>Note: Normally, I would use either "flower up" labels or persistent labels. However, I am using placeholder text in place of labels to match "Contact Us" form styling.</p>
 </div>
