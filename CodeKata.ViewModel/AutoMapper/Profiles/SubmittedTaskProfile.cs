@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Web.UI;
 using AutoMapper;
+using CodeKata.Domain;
 using CodeKata.Domain.Models;
 using CodeKata.ViewModel.DTO.SubmittedTask;
 
@@ -25,7 +27,17 @@ namespace CodeKata.ViewModel.Profiles
                 .ForMember(dst => dst.LastUpdatedDateTime, opt => opt.MapFrom(src => DateTime.UtcNow))
                 .ForMember(dst => dst.SubmitDateTime, opt => opt.MapFrom(src => DateTime.UtcNow))
                 .ForMember(dst => dst.Type, opt => opt.MapFrom(src => src.Type))
+                .ForMember(dst => dst.SubmittedBy, opt => opt.MapFrom(src => ResolveUserById(src.SubmittedById)))
+                .ForMember(dst => dst.LastUpdatedBy, opt => opt.MapFrom(src => ResolveUserById(src.SubmittedById)))
                 ;
+        }
+
+        private User ResolveUserById(int id)
+        {
+            using (var context = new CodeKataContext())
+            {
+                return context.Users.Single(usr => usr.Id == id);
+            }
         }
 
         // todo: remove if we ever replace the "Type" with a properly joined table that has "Display Name" column

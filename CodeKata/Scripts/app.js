@@ -61,7 +61,7 @@ var bindClickEvents = function()
 
 var bindSelect2 = function()
 {
-	$("#TaskUser").select2(
+	$("#SubmittedBy").select2(
 		{
 			ajax: {
 				url: "/Home/GetUsers",
@@ -97,7 +97,6 @@ var bindSelect2 = function()
 				return $userDto;
 			},
 			templateSelection: function(userDto){
-				console.log(userDto);
 				if(!userDto.Name) { return userDto.text; }
 				var $userDto = $(
 					'<div>' + userDto.Name + '</div>'
@@ -197,6 +196,9 @@ function UploadFile()
     // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
     // https://developer.mozilla.org/en-US/docs/Web/API/FormData/append
     var formData = new FormData();
+
+    var SubmittedBy = $('#SubmittedBy').val();
+    formData.append("SubmittedById", SubmittedBy);
 
     var fileToUpload = $('#FileToUpload').prop('files')[0];
     formData.append("fileToUpload", fileToUpload, fileToUpload.name);

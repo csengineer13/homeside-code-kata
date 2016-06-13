@@ -49,6 +49,8 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Explore datatable configuration properties
 - [ ] Drag & Drop upload
 - [ ] Shift REST API endpoints to Web API controllers
+- [ ] SubmitTaskDto -> In AfterMap... Use EF's "Attach" method in place of "ResolveUserById" to prevent insert of existing user on save
+  http://stackoverflow.com/questions/13003345/how-can-i-prevent-ef-from-inserting-an-object-that-already-exists-in-the-db-when
 
 
 

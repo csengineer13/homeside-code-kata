@@ -11,5 +11,6 @@ namespace CodeKata.ViewModel.DTO.SubmittedTask
         public string Name { get; set; }
         public string Description { get; set; }
         public TaskType Type { get; set; }
+        public int SubmittedById { get; set; }
     }
 }
