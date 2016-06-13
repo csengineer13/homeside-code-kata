@@ -11,6 +11,7 @@ using CodeKata.Common;
 using CodeKata.Domain;
 using CodeKata.Domain.Models;
 using CodeKata.ViewModel;
+using CodeKata.ViewModel.DTO;
 using CodeKata.ViewModel.DTO.SubmittedTask;
 
 namespace CodeKata.Controllers
@@ -75,6 +76,29 @@ namespace CodeKata.Controllers
             }
         }
 
+
+        //
+        // GET: /Home/GetUsers
+        [HttpGet]
+        public ActionResult GetUsers(string searchTerm = "", int page = 1)
+        {
+            List<User> allUsers;
+            using (var context = new CodeKataContext())
+            {
+                allUsers = context.Users
+                    .Where(usr => (usr.FirstName + " " + usr.LastName + " " + usr.EmployeeId).Contains(searchTerm))
+                    .OrderByDescending(usr => usr.FirstName)
+                    .ToList();
+            }
+
+            var returnDictionary = new Dictionary<string, dynamic>
+            {
+                {"items", _mapper.Map<List<User>, List<UserSearchDto>>(allUsers) },
+                {"total_count", allUsers.Count() }
+            };
+
+            return new JsonNetResult { Data = returnDictionary };
+        }
 
         //
         // GET: /Home/SubmittedTasks
