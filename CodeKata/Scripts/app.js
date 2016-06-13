@@ -87,7 +87,7 @@ var bindSelect2 = function()
 				},
 				cache: true
 			},
-			placeholder: "Search by name",
+			placeholder: "User Submitting Task",
 			allowClear: true,
 			templateResult: function(userDto){
 				if(!userDto.Name) { return userDto.text; }
