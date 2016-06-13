@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeKata.Domain", "CodeKata
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeKata.ViewModel", "CodeKata.ViewModel\CodeKata.ViewModel.csproj", "{98278A85-C132-42A8-9C17-AA26615D9033}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeKata.WindowsService", "CodeKata.WindowsService\CodeKata.WindowsService.csproj", "{47B9411B-14FA-473E-8501-D87700AB5C6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{98278A85-C132-42A8-9C17-AA26615D9033}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98278A85-C132-42A8-9C17-AA26615D9033}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98278A85-C132-42A8-9C17-AA26615D9033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B9411B-14FA-473E-8501-D87700AB5C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B9411B-14FA-473E-8501-D87700AB5C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B9411B-14FA-473E-8501-D87700AB5C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B9411B-14FA-473E-8501-D87700AB5C6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
