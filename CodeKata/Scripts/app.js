@@ -48,7 +48,7 @@ var bindClickEvents = function()
 	});
 	//close the lateral panel
 	$('.modal').on('click', function(event){
-		if( $(event.target).is('.modal') || $(event.target).is('.modal-close') ) { 
+		if( $(event.target).is('.modal') || $(event.target).is('.modal-close') || $(event.target).is("#Close_btn") ) { 
 			
 			$('.modal').addClass('animate-out');
 			$('.modal').removeClass('is-open');
@@ -57,6 +57,8 @@ var bindClickEvents = function()
 			event.preventDefault();
 		}
 	});
+
+	$("#Submit_btn").on('click', UploadFile);
 };
 
 var bindSelect2 = function()
