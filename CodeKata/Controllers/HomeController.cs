@@ -51,6 +51,16 @@ namespace CodeKata.Controllers
 
             using (var context = new CodeKataContext())
             {
+                // Associate with user
+                var matchedUser = context.Users.Single(usr => usr.Id == submittedTaskForm.SubmittedById);
+                newTask.SubmittedBy = matchedUser;
+                newTask.LastUpdatedBy = matchedUser;
+
+                // Tell EF that this is an existing obj
+                context.Users.Attach(newTask.SubmittedBy);
+                context.Users.Attach(newTask.LastUpdatedBy);
+
+                // Add & Update
                 context.SubmittedTasks.Add(newTask);
                 context.SaveChanges();
             }

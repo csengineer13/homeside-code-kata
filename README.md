@@ -27,7 +27,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Wire buttons up to load different content in modal
 - [ ] Add clientside validation for basic form
 - [ ] Add "toast" notifications for SubmitTask method on front-end
-- [ ] Select2 for user form select
+- [x] Select2 for user form select
 - [ ] Clean form and toast stylings
 - [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
 	- Need a way to retrieve file from stored Byte Array
@@ -49,8 +49,8 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Explore datatable configuration properties
 - [ ] Drag & Drop upload
 - [ ] Shift REST API endpoints to Web API controllers
-- [ ] SubmitTaskDto -> In AfterMap... Use EF's "Attach" method in place of "ResolveUserById" to prevent insert of existing user on save
-  http://stackoverflow.com/questions/13003345/how-can-i-prevent-ef-from-inserting-an-object-that-already-exists-in-the-db-when
+- [x] SubmitTaskDto -> In AfterMap... Use EF's "Attach" method in place of "ResolveUserById" to prevent insert of existing user on save
+  - http://stackoverflow.com/questions/13003345/how-can-i-prevent-ef-from-inserting-an-object-that-already-exists-in-the-db-when
 
 
 
