@@ -130,6 +130,39 @@ a {
 	}
 }
 
+a {
+	font-size: .875em;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #838385;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	padding: 15px 10px;
+
+	&.warn {
+		color: #f7a11a;
+
+		&:visited {
+			color: #f7a11a;
+		}
+
+		&:hover {
+			color: #838385;
+		}
+	}
+
+	&:visited {
+		color: #838385;
+	}
+
+	&:hover{
+		color: #f7a11a;
+		text-decoration: none;
+		outline: 0;
+	}
+}
+
 .subheading {
 	color: color(grey);
 }
