@@ -24,6 +24,7 @@ namespace CodeKata.WindowsService
 
         public static System.Timers.Timer GetSubmittedTasksTimer = new System.Timers.Timer();
         public static ConcurrentDictionary<int, SubmittedTask> _concurrentSubmittedTasks = new ConcurrentDictionary<int, SubmittedTask>(); 
+        public static ConcurrentDictionary<int, SubmittedTask> _concurrentDirtyTasks = new ConcurrentDictionary<int, SubmittedTask>();
 
         public Service1()
         {
@@ -82,14 +83,33 @@ namespace CodeKata.WindowsService
         
             // todo: connection pool cleanup task?
 
-            // Forever running threads
+            // Dirty Updater
             Task.Run(() =>
             {
-                var hello = 0;
                 while (_applicationIsRunning)
                 {
-                    // Spin up tasks to update dirty task entries in DB
-                    hello++;
+                    SubmittedTask task;
+                    if (_concurrentDirtyTasks.Any() && _concurrentDirtyTasks.TryRemove(_concurrentDirtyTasks.First().Key, out task))
+                    {
+                        Task.Run(() =>
+                        {
+                            switch (task.Status)
+                            {
+                                case TaskStatus.Queued:
+                                    task.Status = TaskStatus.Processing;
+                                    task.StartDateTime = DateTime.UtcNow;
+                                    task.UpdateExistingTask();
+                                    break;
+                                case TaskStatus.Processing:
+                                    Console.WriteLine("Case 2");
+                                    break;
+                                default: // Finished or Error
+                                    Console.WriteLine("Default case");
+                                    break;
+                            }
+                        });
+                    }
+
                     Thread.Sleep(1000);
                 }
             });
@@ -102,7 +122,6 @@ namespace CodeKata.WindowsService
 
             try
             {
-                // todo: Update statistics
                 await ImportNewSubmittedTasks();
             }
             catch (Exception ex)
@@ -118,8 +137,9 @@ namespace CodeKata.WindowsService
         {
             try
             {
+                // Note: kind of pointless to offload this now, but could be useful if we begin
+                // pulling in from multiple states/statuses and need to massage data
                 var allQueuedTasks = SubmittedTask.GetTasksByStatus(TaskStatus.Queued);
-                // Update statistics with jobs in queue for "being worked on" ???
                 foreach (SubmittedTask task in allQueuedTasks)
                 {
                     await ProcessSubmittedTask(task);
@@ -138,36 +158,12 @@ namespace CodeKata.WindowsService
             {
                 try
                 {
-                    // Background permenant thread updating dirty dictionary
-                    // Questions? Can there ever be overlap or concurrency issues?
-
-                    // todo: ALL OF THIS
-                    // Update to "processing"
-                    // Update ConcurrentDictionary
-                    // Add to DirtyConcurrentDictionary
-
-                    // AWAIT :: Kick off any child actions?
-
-                    // Update to "finished"
-                    // Update ConcurrentDictionary
-                    // Add to DirtyConcurrentDictionary
-
-                    // On update loop, when saving Dirty item in "finished" status,
-                    // We can remove from both dictionaries
-
                     SubmittedTask oldTask;
-                    // If exists, update
-                    if (_concurrentSubmittedTasks.ContainsKey(task.Id))
-                    {
-                        if (_concurrentSubmittedTasks.TryGetValue(task.Id, out oldTask))
-                            _concurrentSubmittedTasks.TryUpdate(task.Id, task, oldTask);
-                    }
-                    // If new, add
-                    else
+                    if (!_concurrentSubmittedTasks.ContainsKey(task.Id))
                     {
                         _concurrentSubmittedTasks.TryAdd(task.Id, task);
+                        _concurrentDirtyTasks.TryAdd(task.Id, task);
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -182,7 +178,6 @@ namespace CodeKata.WindowsService
             // Stop any timers
             GetSubmittedTasksTimer.Stop();
             _applicationIsRunning = false;
-            // Kill monitor service
         }
     }
 }
