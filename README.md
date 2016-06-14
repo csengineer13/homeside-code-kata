@@ -101,3 +101,20 @@ Goal of this exercise is to build a web portal that allows all departments to up
 * Suggestion on how to log into various websites to automate clicking  and submitting. Frameworks?
 * Give us a brief overview of how you would track analytics given one action / task saves x amount of time.
 * All must work on your laptop. Let’s not worry about installing / deploying the solution.
+
+
+
+### WinService Install
+
+1. Build WindowsService Project as Release
+2. Move `bin/release` to a new location on C drive
+3. Locate InstallUtil (C:\Windows\Microsoft.NET\Framework\vXXXXX\InstallUtil)
+4. Open command prompt as admin
+5. Navigate to WindowsService files location
+6. Run following command:
+
+`C:\Windows\Microsoft.NET\Framework\vXXXXX\InstallUtil /i NameOfMainFile.exe`
+
+`/u` for uninstallse
+
+7. Enter DOMAIN/usr (xx/brownd), and password
