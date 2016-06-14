@@ -37,11 +37,10 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Remove Id Column from data-table
 - [x] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
   - Need a way to retrieve file from stored Byte Array
-- [ ] Better form button styling
+- [x] Better form button styling
 - [x] Increase "toast" duration
 - [ ] Create docs for "windows service install"
 - [ ] Install windows service locally (start / stop / test)
-- [ ] Data annotations on DTO, and check for server side valid
   - Maybe a catch-all try-catch as well for upload
 - [ ] Generate bullet points for posed questions in problem's prompt
 - [ ] Begin working on bonus items
@@ -55,8 +54,10 @@ Goal of this exercise is to build a web portal that allows all departments to up
 	- Think about pulling this out into a seperate table
 	- Investigate ways to use this field in step #7 as suggested...
 	- Linked table where each task has associated actions (front-end fields required), and PowerShell or Python scripts?
+- [ ] Data annotations on DTO, and check for server side valid
+  - Method to display server side validation errors
 - [ ] Pull domain enums into their own tables (CRUD management later on?)
-- [ ] Add quick filters for datatable (status)
+- [ ] Add quick filters for datatable (status) && REFRESH *****
 - [ ] Add a more obvious differentiatior for status (color / shape / icon)
 - [ ] Enhance seed data (timestamps and states match up)
 - [ ] Explore datatable configuration properties
