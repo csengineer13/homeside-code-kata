@@ -53,8 +53,6 @@ namespace CodeKata.WindowsService
                 EventLog.CreateEventSource(data);
             }
 
-            // todo: Turn on a monitoring service?
-
             try
             {
                 var connectionString = ConfigurationManager.ConnectionStrings["CodeKataContext"].ConnectionString;
@@ -99,18 +97,28 @@ namespace CodeKata.WindowsService
                                     task.Status = TaskStatus.Processing;
                                     task.StartDateTime = DateTime.UtcNow;
                                     task.UpdateExistingTask();
+
+                                    // "Process" Task
+                                    task.Status = ProcessSubmittedTask(task);
+                                    task.EndDateTime = DateTime.UtcNow;
+                                    task.UpdateExistingTask();
+
                                     break;
-                                case TaskStatus.Processing:
-                                    Console.WriteLine("Case 2");
+                                case TaskStatus.Processing: // Should never hit
+                                    task.Status = TaskStatus.Error;
+                                    task.EndDateTime = DateTime.UtcNow;
                                     break;
                                 default: // Finished or Error
-                                    Console.WriteLine("Default case");
+                                    Console.WriteLine("Task is in finished or error status");
                                     break;
                             }
+
+                            SubmittedTask throwAway;
+                            _concurrentSubmittedTasks.TryRemove(task.Id, out throwAway); // We use this to stop duplicates from entering dirty queue
                         });
                     }
 
-                    Thread.Sleep(1000);
+                    Thread.Sleep(100);
                 }
             });
         }
@@ -122,7 +130,7 @@ namespace CodeKata.WindowsService
 
             try
             {
-                await ImportNewSubmittedTasks();
+                await ImportSubmittedTasks();
             }
             catch (Exception ex)
             {
@@ -133,7 +141,7 @@ namespace CodeKata.WindowsService
             GetSubmittedTasksTimer.Start();
         }
 
-        public static async Task ImportNewSubmittedTasks()
+        public static async Task ImportSubmittedTasks()
         {
             try
             {
@@ -142,7 +150,7 @@ namespace CodeKata.WindowsService
                 var allQueuedTasks = SubmittedTask.GetTasksByStatus(TaskStatus.Queued);
                 foreach (SubmittedTask task in allQueuedTasks)
                 {
-                    await ProcessSubmittedTask(task);
+                    await QueueSubmittedTask(task);
                 }
             }
             catch (Exception ex)
@@ -152,13 +160,13 @@ namespace CodeKata.WindowsService
             }
         }
 
-        private static Task ProcessSubmittedTask(SubmittedTask task)
+        private static Task QueueSubmittedTask(SubmittedTask task)
         {
             return Task.Run(() =>
             {
                 try
                 {
-                    SubmittedTask oldTask;
+                    //SubmittedTask oldTask; If exists, could pull out to see if varies
                     if (!_concurrentSubmittedTasks.ContainsKey(task.Id))
                     {
                         _concurrentSubmittedTasks.TryAdd(task.Id, task);
@@ -171,6 +179,18 @@ namespace CodeKata.WindowsService
                     EventLog.WriteEntry(_eventLogSource, ex.Message, EventLogEntryType.Error);
                 }
             });
+        }
+
+        private static TaskStatus ProcessSubmittedTask(SubmittedTask task)
+        {
+            var oneSecond = 1000;
+            var thirtySeconds = 30000;
+
+            // Simulate "Processing"
+            Random rnd = new Random();
+            Thread.Sleep(rnd.Next(oneSecond, thirtySeconds));
+
+            return TaskStatus.Finished;
         }
 
         protected override void OnStop()

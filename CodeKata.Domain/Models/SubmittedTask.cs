@@ -68,6 +68,7 @@ namespace CodeKata.Domain.Models
         {
             using (var context = new CodeKataContext())
             {
+                // https://msdn.microsoft.com/en-us/data/jj592676
                 context.Entry(this).State = EntityState.Modified;
                 context.SaveChanges();
             }
