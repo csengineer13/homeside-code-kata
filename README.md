@@ -34,11 +34,11 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Immediately mark task as "processing" when pulled from queue
 - [x] Mock "processing time" for each task in queue
 - [x] Clean up windows service
-- [ ] Remove Id Column from data-table
-- [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
+- [x] Remove Id Column from data-table
+- [x] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
   - Need a way to retrieve file from stored Byte Array
 - [ ] Better form button styling
-- [ ] Increase "toast" duration
+- [x] Increase "toast" duration
 - [ ] Create docs for "windows service install"
 - [ ] Install windows service locally (start / stop / test)
 - [ ] Data annotations on DTO, and check for server side valid

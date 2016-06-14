@@ -21,7 +21,7 @@ vm.Notifications = {
 		$newNotification = '<div class="notification notification--' + type + '">' + message + '</div>';
 		$(".notification-container").append($newNotification);
 
-		setTimeout(function(){ vm.Notifications.removeOldest(); }, 3000);
+		setTimeout(function(){ vm.Notifications.removeOldest(); }, 5000);
 	},
 	removeOldest: function(){
 		$(".notification-container").find('.notification:first').remove();
@@ -182,7 +182,7 @@ var bindDataTable = function()
 	setInterval( function () {
     	table.ajax.reload( null, false ); // user paging is not reset on reload
     	vm.Notifications.add("Table data has been refreshed", "info", 0);
-	}, 120000 ); // 2-minutes
+	}, 60000 ); // 1-minute
 };
 
 
