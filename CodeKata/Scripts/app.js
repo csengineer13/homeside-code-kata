@@ -74,7 +74,7 @@ var bindClickEvents = function()
 	});
 	//close the lateral panel
 	$('.modal').on('click', function(event){
-		if( $(event.target).is('.modal') || $(event.target).is('.modal-close') || $(event.target).is("#Close_btn") ) { 
+		if( $(event.target).is('.modal') || $(event.target).is('.modal-close') ) { 
 			
 			$('.modal').addClass('animate-out');
 			$('.modal').removeClass('is-open');
@@ -173,7 +173,7 @@ var bindDataTable = function()
 		  	"targets": [5],
 		  	"data": "FileURL",
 		  	"render": function( data, type, row ) {
-		  		return "<a href=" + data +">Download</a>";
+		  		return "<a style='padding: 0;' href=" + data +">Download</a>";
 		  	}
 		  }]
     });
@@ -227,8 +227,10 @@ function singleFileSelected(evt) {
     }
 }
 
-function UploadFile() 
+function UploadFile(evt) 
 {
+	evt.preventDefault();
+	
 	// 
     // Build our "Form Data" object
     // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
