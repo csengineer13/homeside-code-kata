@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -53,6 +54,23 @@ namespace CodeKata.Domain.Models
                     .Where(tsk => tsk.Status == taskStatus)
                     .ToList();
             }
-        } 
+        }
+
+        public static SubmittedTask GetTaskById(int id)
+        {
+            using (var context = new CodeKataContext())
+            {
+                return context.SubmittedTasks.Single(tsk => tsk.Id == id);
+            }
+        }
+
+        public void UpdateExistingTask()
+        {
+            using (var context = new CodeKataContext())
+            {
+                context.Entry(this).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
     }
 }
