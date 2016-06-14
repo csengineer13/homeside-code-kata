@@ -36,12 +36,10 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Clean up windows service
 - [x] Remove Id Column from data-table
 - [x] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
-  - Need a way to retrieve file from stored Byte Array
 - [x] Better form button styling
 - [x] Increase "toast" duration
-- [ ] Create docs for "windows service install"
-- [ ] Install windows service locally (start / stop / test)
-  - Maybe a catch-all try-catch as well for upload
+- [x] Create docs for "windows service install"
+- [x] Install windows service locally (start / stop / test)
 - [ ] Generate bullet points for posed questions in problem's prompt
 - [ ] Begin working on bonus items
 
