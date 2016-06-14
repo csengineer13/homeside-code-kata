@@ -29,15 +29,22 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Clean form
 - [x] Add "toast" notifications for SubmitTask method on front-end
 - [x] Add clientside validation for basic form
+- [x] Check to see how "errors" are returned with JsonNetResult
+- [x] Begin to create WindowsService Project
+- [x] Immediately mark task as "processing" when pulled from queue
+- [x] Mock "processing time" for each task in queue
+- [x] Clean up windows service
+- [ ] Remove Id Column from data-table
+- [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
+  - Need a way to retrieve file from stored Byte Array
+- [ ] Better form button styling
+- [ ] Increase "toast" duration
+- [ ] Create docs for "windows service install"
+- [ ] Install windows service locally (start / stop / test)
 - [ ] Data annotations on DTO, and check for server side valid
   - Maybe a catch-all try-catch as well for upload
-- [ ] Check to see how "errors" are returned with JsonNetResult
-  - May have to key off of returned "statusCode" to determine error level (or add errorLevel field to the VM)
-- [ ] Better form button styling
-- [ ] Store filepath and url? URL can probably be a way to retrieve via a get request using fileID
-	- Need a way to retrieve file from stored Byte Array
-- [ ] Begin to create WindowsService Project
-
+- [ ] Generate bullet points for posed questions in problem's prompt
+- [ ] Begin working on bonus items
 
 #### Housecleaning: Bonus
 - [x] SubmitTaskDto -> In AfterMap... Use EF's "Attach" method in place of "ResolveUserById" to prevent insert of existing user on save
@@ -80,10 +87,10 @@ Goal of this exercise is to build a web portal that allows all departments to up
   * ~~Status (queued, processing, finished, error)~~
   * ~~File path / url to file uploaded~~
 6. ~~create a status page that utilizes jquery datatables to show each task in queue and the status. Order by date created. You should have 1 datatable. It must convey to the user which tasks are queued, processing, failed and successful.~~
-7. Lastly, create a c# windows service that queries the database you created, for all tasks in queued status.
-8. For now, don’t worry about the actual actions / code to implement each. Just set the end datetime and go onto the next queued item ( later, if hired, we will work on the automation / action code)
+7. ~~Lastly, create a c# windows service that queries the database you created, for all tasks in queued status.~~
+8. ~~For now, don’t worry about the actual actions / code to implement each. Just set the end datetime and go onto the next queued item ( later, if hired, we will work on the automation / action code)~~
   * Think about a scalable way to implement the actions so that over the next few years will have reusable actions that can be plugged into / reused. You don’t have to necessarily create all of it now but be able to speak to your plan on how we can implement this idea.
-9. Lastly the windows service must process tasks in parallel (concurrently using multi-threading) and update the database immediately when a task is pulled off the queue (setting status to processing etc).
+9. ~~Lastly the windows service must process tasks in parallel (concurrently using multi-threading) and update the database immediately when a task is pulled off the queue (setting status to processing etc).~~
 
  
 ## The Review
