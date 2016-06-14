@@ -55,9 +55,10 @@ namespace CodeKata.WindowsService
 
             try
             {
-                var connectionString = ConfigurationManager.ConnectionStrings["CodeKataContext"].ConnectionString;
-                SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder(connectionString);
-                _sqlConnectionString = sqlBuilder.ConnectionString;
+                // If we were using stored procs instead of models
+                //var connectionString = ConfigurationManager.ConnectionStrings["CodeKataContext"].ConnectionString;
+                //SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder(connectionString);
+                //_sqlConnectionString = sqlBuilder.ConnectionString;
                 StartTimers();
             }
             catch (Exception ex)
@@ -76,7 +77,7 @@ namespace CodeKata.WindowsService
 
             //
             GetSubmittedTasksTimer.Elapsed += GetSubmittedTasksTimer_Elapsed;
-            GetSubmittedTasksTimer.Interval = 5000; // Every 10 seconds
+            GetSubmittedTasksTimer.Interval = 10000; // Every 10 seconds
             GetSubmittedTasksTimer.Start();
         
             // todo: connection pool cleanup task?
