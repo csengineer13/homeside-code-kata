@@ -140,38 +140,41 @@ var bindDataTable = function()
 	// kickstart jQuery DataTable
     var table = $('#example').DataTable({
     	"ajax": '/Home/SubmittedTasks',
-    	"order": [[ 4, "desc" ]],
+    	"order": [[ 3, "desc" ]],
     	"columnDefs": [{
 		    "defaultContent": "-",
 		    "targets": "_all"
 		  },
+		  //{
+		  //	"targets": [0],
+		  //	"data": "Id"
+		  //},
 		  {
 		  	"targets": [0],
-		  	"data": "Id"
-		  },
-		  {
-		  	"targets": [1],
 		  	"data": "Name"
 		  },
 		  {
-		  	"targets": [2],
+		  	"targets": [1],
 		  	"data": "Type"
 		  },
 		  {
-		  	"targets": [3],
+		  	"targets": [2],
 		  	"data": "Status"
 		  },
 		  {
-		  	"targets": [4],
+		  	"targets": [3],
 		  	"data": "CreatedDate"
 		  },
 		  {
-		  	"targets": [5],
+		  	"targets": [4],
 		  	"data": "CreatedBy"
 		  },
 		  {
-		  	"targets": [6],
-		  	"data": "FileURL"
+		  	"targets": [5],
+		  	"data": "FileURL",
+		  	"render": function( data, type, row ) {
+		  		return "<a href=" + data +">Download</a>";
+		  	}
 		  }]
     });
 
