@@ -85,6 +85,20 @@ var bindClickEvents = function()
 		}
 	});
 
+	$("#RefreshTableData").on('click', function(event){
+		event.preventDefault();
+		$('#example').DataTable().ajax.reload();
+		vm.Notifications.add("Table data has been refreshed", "info", 0);
+	});
+
+	$(".filterTable").on('click', function(event){
+		event.preventDefault();
+
+		var target = $(event.target).prop("target");
+		$("#filterCategory").val(target);
+		$("#filterCategory").trigger("change");
+	});
+
 	$("#Submit_btn").on('click', UploadFile);
 };
 
@@ -137,6 +151,21 @@ var bindSelect2 = function()
 
 var bindDataTable = function()
 {
+	// Custom search
+	$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var filterStatus = $('#filterCategory').val();
+	        var statusColumn = data[2] || ""; // use data for the status column
+	 
+	 		// "Matching" logic
+	        if ( statusColumn == filterStatus || filterStatus == "" )
+	        {
+	            return true;	// Is match
+	        }
+	        return false;
+	    }
+	);
+
 	// kickstart jQuery DataTable
     var table = $('#example').DataTable({
     	"ajax": '/Home/SubmittedTasks',
@@ -173,9 +202,18 @@ var bindDataTable = function()
 		  	"targets": [5],
 		  	"data": "FileURL",
 		  	"render": function( data, type, row ) {
-		  		return "<a style='padding: 0;' href=" + data +">Download</a>";
+		  		if(data == '/Home/GetFile?fileId=0'){
+		  			return "No File";
+		  		}else{
+		  			return "<a style='padding: 0;' href=" + data +">Download</a>";
+		  		}
 		  	}
 		  }]
+    });
+
+    // When our hidden field changes, redraw
+    $('#filterCategory').change( function() {
+        table.draw();
     });
 
  	// Refresh every x seconds

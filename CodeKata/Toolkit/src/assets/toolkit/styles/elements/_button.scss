@@ -1,7 +1,28 @@
+a.button-outline {
+    background-color: transparent;
+    color: #f7a11a;
+    border: solid 1px #f7a11a;
+
+    &:hover {
+    	color: white;
+    	background-color: #f7a11a;
+    	border: solid 1px transparent;
+    }
+}
+
 a.button-solid {
     background-color: #f7a11a;
     color: white;
     border: solid 1px transparent;
+
+    &:hover {
+    	color: #f7a11a;
+    	background: transparent;
+    	border: solid 1px #f7a11a;
+    }
+}
+
+a.button-outline, a.button-solid {
 
     display: inline-block;
     text-align: center;
@@ -23,12 +44,6 @@ a.button-solid {
     -webkit-transition: 0.45s, all;
     -moz-transition: 0.45s, all;
     transition: 0.45s, all;
-
-    &:hover {
-    	color: #f7a11a;
-    	background: transparent;
-    	border: solid 1px #f7a11a;
-    }
 }
 
 

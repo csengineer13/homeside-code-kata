@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlTypes;
 using System.Linq;
 using Bogus;
 
@@ -23,9 +24,8 @@ namespace CodeKata.Domain.Models.Seed
                 .RuleFor(u => u.Status, f => f.PickRandom<TaskStatus>())
                 .RuleFor(u => u.SubmitDateTime, f => f.Date.Recent(2))
                 .RuleFor(u => u.SubmittedBy, f => testUsers.Generate())
-                .RuleFor(u => u.QueuedDateTime, f => f.Date.Between(recentDay, recentDay).AddMinutes(55))
-                .RuleFor(u => u.StartDateTime, f => f.Date.Between(recentDay.AddMinutes(55), recentDay).AddMinutes(120))
-                .RuleFor(u => u.EndDateTime, f => f.Date.Between(recentDay.AddMinutes(120), recentDay.AddMinutes(600)))
+                .RuleFor(u => u.StartDateTime, (f, u) => (u.Status != TaskStatus.Queued) ? f.Date.Between(recentDay.AddMinutes(55), recentDay).AddMinutes(120) : SqlDateTime.MinValue.Value)
+                .RuleFor(u => u.EndDateTime, (f, u) => (u.Status == TaskStatus.Error || u.Status == TaskStatus.Finished) ? f.Date.Between(recentDay.AddMinutes(120), recentDay.AddMinutes(600)) : SqlDateTime.MinValue.Value)
                 .RuleFor(u => u.LastUpdatedDateTime, (f, u) => u.EndDateTime)
                 .RuleFor(u => u.LastUpdatedBy, (f, u) => u.SubmittedBy)
                 .FinishWith((f, u) =>
@@ -46,7 +46,10 @@ namespace CodeKata.Domain.Models.Seed
 
                 // todo: check statuses match timestamps (queued should not have a finishedDateTime)
 
-                context.SubmittedTasks.Add(newTask);
+                if (newTask.Status != TaskStatus.Processing)
+                {
+                    context.SubmittedTasks.Add(newTask);
+                }
                 numSubmittedTasksToGen--;
             }
 

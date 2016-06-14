@@ -29,7 +29,6 @@ namespace CodeKata.Domain.Models
         public TaskStatus Status { get; set; }
         public TaskType Type { get; set; }
         public DateTime SubmitDateTime { get; set; }
-        public DateTime? QueuedDateTime { get; set; }
         public DateTime? StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }
         public DateTime LastUpdatedDateTime { get; set; }

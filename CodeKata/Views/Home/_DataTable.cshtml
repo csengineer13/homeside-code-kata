@@ -1,4 +1,18 @@
-﻿<table id="example" class="display" cellspacing="0" width="100%">
+﻿<section style="margin-bottom: 35px;">
+    <a href="#" class="button-solid" id="RefreshTableData">Refresh Results</a>
+
+    <div style="float: right;">
+        <a href="#" class="filterTable button-outline" target="Queued">Queued</a>
+        <a href="#" class="filterTable button-outline" target="Processing">Processing</a>
+        <a href="#" class="filterTable button-outline" target="Finished">Finished</a>
+        <a href="#" class="filterTable button-outline" target="Error">Error</a>
+        <a href="#" class="filterTable button-outline" target="">Clear</a>
+    </div>
+    <input type="text" id="filterCategory" style="visibility: hidden; position: absolute;" value=""/>
+    <div style="clear: both;"></div>
+</section>
+
+<table id="example" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
             <!-- <th>Id</th> -->

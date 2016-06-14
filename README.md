@@ -41,7 +41,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [x] Create docs for "windows service install"
 - [x] Install windows service locally (start / stop / test)
 - [ ] Generate bullet points for posed questions in problem's prompt
-- [ ] Begin working on bonus items
+- [x] Begin working on bonus items
 
 #### Housecleaning: Bonus
 - [x] SubmitTaskDto -> In AfterMap... Use EF's "Attach" method in place of "ResolveUserById" to prevent insert of existing user on save
@@ -55,7 +55,7 @@ Goal of this exercise is to build a web portal that allows all departments to up
 - [ ] Data annotations on DTO, and check for server side valid
   - Method to display server side validation errors
 - [ ] Pull domain enums into their own tables (CRUD management later on?)
-- [ ] Add quick filters for datatable (status) && REFRESH *****
+- [x] Add quick filters for datatable (status) && REFRESH *****
 - [ ] Add a more obvious differentiatior for status (color / shape / icon)
 - [ ] Enhance seed data (timestamps and states match up)
 - [ ] Explore datatable configuration properties

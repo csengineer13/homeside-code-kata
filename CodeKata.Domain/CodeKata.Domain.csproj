@@ -107,6 +107,10 @@
     <Compile Include="Migrations\201606121302062_nullable-datetimes.Designer.cs">
       <DependentUpon>201606121302062_nullable-datetimes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606141543436_removing unneeded timestamp.cs" />
+    <Compile Include="Migrations\201606141543436_removing unneeded timestamp.Designer.cs">
+      <DependentUpon>201606141543436_removing unneeded timestamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\Seed\SubmittedTaskSeed.cs" />
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606121302062_nullable-datetimes.resx">
       <DependentUpon>201606121302062_nullable-datetimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606141543436_removing unneeded timestamp.resx">
+      <DependentUpon>201606141543436_removing unneeded timestamp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
