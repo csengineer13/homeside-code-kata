@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
@@ -111,6 +114,26 @@ namespace CodeKata.Controllers
             };
 
             return new JsonNetResult { Data = returnDictionary };
+        }
+
+        [HttpGet]
+        public ActionResult GetFile(int fileId)
+        {
+            try
+            {
+                Attachment matchedFile;
+                using (var context = new CodeKataContext())
+                {
+                    matchedFile = context.Attachments.Single(att => att.Id == fileId);
+                }
+
+                var memoryStream = new MemoryStream(matchedFile.FileContent);
+                return new FileStreamResult(memoryStream, matchedFile.FileType) { FileDownloadName = matchedFile.FileName };
+            }
+            catch (Exception ex)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Bad Request");
+            }
         }
     }
 }
