@@ -20,6 +20,7 @@ namespace CodeKata.ViewModel.Profiles
                 .ForMember(dst => dst.CreatedDate, opt => opt.MapFrom(src => src.SubmitDateTime.ToString()))
                 .ForMember(dst => dst.Status, opt => opt.MapFrom(src => src.Status.ToString()))
                 .ForMember(dst => dst.Type, opt => opt.MapFrom(src => AddSpacesToSentence(src.Type.ToString())))
+                .ForMember(dst => dst.FileURL, opt => opt.MapFrom(src => "/Home/GetFile?fileId=" + src.Attachment.Id))
                 ;
 
             this.CreateMap<SubmittedTaskFormDto, SubmittedTask>()

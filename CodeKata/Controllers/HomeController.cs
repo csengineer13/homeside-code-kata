@@ -99,6 +99,7 @@ namespace CodeKata.Controllers
             using (var context = new CodeKataContext())
             {
                 allSubmittedTasks = context.SubmittedTasks
+                    .Include("Attachment")
                     .Include("LastUpdatedBy")
                     .Include("SubmittedBy")
                     .ToList();
